@@ -13,54 +13,101 @@
 <ComponentType name="pinskyRinzelCA3Cell"
     extends="baseCellMembPotDL"
     description="Preliminary version of Pinsky Rinzel model. Still in development!!">
-    
-    <Parameter name="C" dimension="none" description="Total capacitance of the cell membrane"/>
-    <!-- Have to put C here, because I can't inherit from baseCellMembPot and baseIafCapCell at the same time -->
-    <Parameter name="I" dimension="none"/>
-    <Parameter name="gL" dimension="none"/>
+
+    <Parameter name="Ip0" dimension="none"/>
+    <Parameter name="gLs" dimension="none"/>
+    <Parameter name="gLd" dimension="none"/>
+    <Parameter name="gNa" dimension="none"/>
+    <Parameter name="gKdr" dimension="none"/>
     <Parameter name="gCa" dimension="none"/>
-    <Parameter name="gK" dimension="none"/>
-    <Parameter name="VL" dimension="none"/>
+    <Parameter name="gKahp" dimension="none"/>
+    <Parameter name="gKC" dimension="none"/>
+    <Parameter name="VNa" dimension="none"/>
     <Parameter name="VCa" dimension="none"/>
     <Parameter name="VK" dimension="none"/>
-    <Parameter name="V1" dimension="none"/>
-    <Parameter name="V2" dimension="none"/>
-    <Parameter name="V3" dimension="none"/>
-    <Parameter name="V4" dimension="none"/>
-    <Parameter name="phi" dimension="none"/>
+    <Parameter name="VL" dimension="none"/>
+    <Parameter name="Vsyn" dimension="none"/>
+    <Parameter name="gc" dimension="none"/>
+    <Parameter name="pp" dimension="none"/>
+    <Parameter name="Cm" dimension="none"/>
+    <Parameter name="alphac" dimension="none"/>
+    <Parameter name="betac" dimension="none"/>
 
-    <!-- Needed to ensure V, W & I remain dimensionless... -->
-    <Constant name="SEC" dimension="time" value="1s"/>
 
-    <Exposure name="N" dimension="none"/>
-    <Exposure name="Nss" dimension="none"/>
-    <Exposure name="Mss" dimension="none"/>
-    <Exposure name="IL" dimension="none"/>
-    <Exposure name="IK" dimension="none"/>
-    <Exposure name="ICa" dimension="none"/>
+    <!-- Needed to ensure Vs, Vd remain dimensionless... -->
+    <Constant name="MSEC" dimension="time" value="1s"/>
+
+    <Exposure name="Vs" dimension="none"/>
+    <Exposure name="Vd" dimension="none"/>
+    
+    <Exposure name="Cad" dimension="none"/>
+    <Exposure name="hs" dimension="none"/>
+    <Exposure name="ns" dimension="none"/>
+    <Exposure name="sd" dimension="none"/>
+    <Exposure name="cd" dimension="none"/>
+    <Exposure name="qd" dimension="none"/>
+
+    <Exposure name="ICad" dimension="none"/>
     
     <Dynamics>
         
-        <StateVariable name="V" dimension="none" exposure="V"/>
-        <StateVariable name="N" dimension="none" exposure="N"/>
+        <StateVariable name="Vs" dimension="none" exposure="Vs"/>
+        <StateVariable name="Vd" dimension="none" exposure="Vd"/>
+        <StateVariable name="Cad" dimension="none" exposure="Cad"/>
+        <StateVariable name="hs" dimension="none" exposure="hs"/>
+        <StateVariable name="ns" dimension="none" exposure="ns"/>
+        <StateVariable name="sd" dimension="none" exposure="sd"/>
+        <StateVariable name="cd" dimension="none" exposure="cd"/>
+        <StateVariable name="qd" dimension="none" exposure="qd"/>
 
-        <!--Note: using exp in these as tanh, cosh not YET supported in LEMS... -->
-        <DerivedVariable name="Mss" dimension="none" exposure="Mss" value="1 / (1 + exp(-2 * (V - V1) / V2))"/>
-        <DerivedVariable name="Nss" dimension="none" exposure="Nss" value="1 / (1 + exp(-2 * (V - V3) / V4))"/>
+        <DerivedVariable name="ICad" dimension="none" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/>
 
-        <DerivedVariable name="tauN" dimension="none" value="2 / (exp((V - V3) / (2 * V4)) + exp(-(V - V3) / (2 * V4)))"/>
+        <DerivedVariable name="alphams_Vs" dimension="none" value="0.32*(-46.9-Vs)/(exp((-46.9-Vs)/4.0)-1.0)"/>
+        <DerivedVariable name="betams_Vs" dimension="none" value="0.28*(Vs+19.9)/(exp((Vs+19.9)/5.0)-1.0)"/>
+        <DerivedVariable name="Minfs_Vs" dimension="none" value="alphams_Vs/(alphams_Vs+betams_Vs)"/>
 
-        <DerivedVariable name="IL" dimension="none" exposure="IL" value="gL * (V - VL)"/>
-        <DerivedVariable name="ICa" dimension="none" exposure="ICa" value="gCa * Mss * (V - VCa)"/>
-        <DerivedVariable name="IK" dimension="none" exposure="IK" value="gK * N * (V - VK)"/>
+        <DerivedVariable name="alphans_Vs" dimension="none" value="0.016*(-24.9-Vs)/(exp((-24.9-Vs)/5.0)-1.0)"/>
+        <DerivedVariable name="betans_Vs" dimension="none" value="0.25*exp(-1.0-0.025*Vs)"/>
 
-        <TimeDerivative variable="V" value="(I - IL - ICa - IK) / (C * SEC)"/>
-        <TimeDerivative variable="N" value="phi * (Nss - N) / (tauN * SEC)"/>
+        <DerivedVariable name="alphahs_Vs" dimension="none" value="0.128*exp((-43.0-Vs)/18.0)"/>
+        <DerivedVariable name="betahs_Vs" dimension="none" value="4.0/(1.0+exp((-20.0-Vs)/5.0))"/>
+
+        <DerivedVariable name="alphasd_Vd" dimension="none" value="1.6/(1.0+exp(-0.072*(Vd-5.0)))"/>
+        <DerivedVariable name="betasd_Vd" dimension="none" value="0.02*(Vd+8.9)/(exp((Vd+8.9)/5.0)-1.0)"/>
+
+        <DerivedVariable name="alphacd_Vd" dimension="none" value="0"/>
+        <DerivedVariable name="betacd_Vd" dimension="none" value="0"/>
+
+        <DerivedVariable name="alphaqd" dimension="none" value="0"/>
+        <DerivedVariable name="betaqd" dimension="none" value="0.001"/>
+
+        <DerivedVariable name="chid" dimension="none" value="0"/>
+
+        <DerivedVariable name="V" dimension="none" exposure="V" value="Vs"/>
         
+        <!--
+TODO:
+
+alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0)
+betacd(v)=   (1.0-heav(v+10.0))*(2.0*exp((-53.5-v)/27.0)-alphacd(v))
+alphaqd=  min(0.00002*Cad,0.01)
+betaqd=   0.001
+chid=     min(Cad/250.0,1.0)-->
+
+
+        <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Ip0/pp)/ (Cm * MSEC)"/>
+        <TimeDerivative variable="Vd" value="(-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp))/ (Cm * MSEC)"/>
+        <TimeDerivative variable="Cad" value="(-0.13*ICad-0.075*Cad) / MSEC"/>
+        <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / MSEC"/>
+        <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / MSEC"/>
+        <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
+        <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
+        <TimeDerivative variable="qd" value="(alphaqd-(alphaqd+betaqd)*qd) / MSEC"/>
+ 
 
         <OnStart>
-            <StateAssignment variable="V" value="VL"/>
-            <StateAssignment variable="N" value="Nss"/>
+            <StateAssignment variable="Vs" value="VL*0"/>
+            <StateAssignment variable="Vd" value="VL*0"/>
         </OnStart>
         
     </Dynamics>
