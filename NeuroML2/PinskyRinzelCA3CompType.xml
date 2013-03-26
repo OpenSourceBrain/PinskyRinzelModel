@@ -1,0 +1,99 @@
+<Lems xmlns="http://www.neuroml.org/lems/0.6"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.neuroml.org/lems/0.6 https://raw.github.com/LEMS/LEMS/master/Schemas/LEMS/LEMS_v0.6.xsd">
+
+<!--
+
+    Definition in LEMS of the Pinsky Rinzel CA3 model
+
+    This should be moved to the core set of NeuroML2 definitions when stable!
+
+-->
+
+<ComponentType name="pinskyRinzelCA3Cell"
+    extends="baseCellMembPotDL"
+    description="Preliminary version of Pinsky Rinzel model. Still in development!!">
+    
+    <Parameter name="C" dimension="none" description="Total capacitance of the cell membrane"/>
+    <!-- Have to put C here, because I can't inherit from baseCellMembPot and baseIafCapCell at the same time -->
+    <Parameter name="I" dimension="none"/>
+    <Parameter name="gL" dimension="none"/>
+    <Parameter name="gCa" dimension="none"/>
+    <Parameter name="gK" dimension="none"/>
+    <Parameter name="VL" dimension="none"/>
+    <Parameter name="VCa" dimension="none"/>
+    <Parameter name="VK" dimension="none"/>
+    <Parameter name="V1" dimension="none"/>
+    <Parameter name="V2" dimension="none"/>
+    <Parameter name="V3" dimension="none"/>
+    <Parameter name="V4" dimension="none"/>
+    <Parameter name="phi" dimension="none"/>
+
+    <!-- Needed to ensure V, W & I remain dimensionless... -->
+    <Constant name="SEC" dimension="time" value="1s"/>
+
+    <Exposure name="N" dimension="none"/>
+    <Exposure name="Nss" dimension="none"/>
+    <Exposure name="Mss" dimension="none"/>
+    <Exposure name="IL" dimension="none"/>
+    <Exposure name="IK" dimension="none"/>
+    <Exposure name="ICa" dimension="none"/>
+    
+    <Dynamics>
+        
+        <StateVariable name="V" dimension="none" exposure="V"/>
+        <StateVariable name="N" dimension="none" exposure="N"/>
+
+        <!--Note: using exp in these as tanh, cosh not YET supported in LEMS... -->
+        <DerivedVariable name="Mss" dimension="none" exposure="Mss" value="1 / (1 + exp(-2 * (V - V1) / V2))"/>
+        <DerivedVariable name="Nss" dimension="none" exposure="Nss" value="1 / (1 + exp(-2 * (V - V3) / V4))"/>
+
+        <DerivedVariable name="tauN" dimension="none" value="2 / (exp((V - V3) / (2 * V4)) + exp(-(V - V3) / (2 * V4)))"/>
+
+        <DerivedVariable name="IL" dimension="none" exposure="IL" value="gL * (V - VL)"/>
+        <DerivedVariable name="ICa" dimension="none" exposure="ICa" value="gCa * Mss * (V - VCa)"/>
+        <DerivedVariable name="IK" dimension="none" exposure="IK" value="gK * N * (V - VK)"/>
+
+        <TimeDerivative variable="V" value="(I - IL - ICa - IK) / (C * SEC)"/>
+        <TimeDerivative variable="N" value="phi * (Nss - N) / (tauN * SEC)"/>
+        
+
+        <OnStart>
+            <StateAssignment variable="V" value="VL"/>
+            <StateAssignment variable="N" value="Nss"/>
+        </OnStart>
+        
+    </Dynamics>
+    
+</ComponentType>
+
+
+</Lems>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+<Lems>
+
+
+<!-- Specify which component to run -->
+<Target component="sim1"/>
+
+<!-- Include core NeuroML2 ComponentType definitions -->
+<Include file="Cells.xml"/>
+<Include file="Networks.xml"/>
+<Include file="Simulation.xml"/>
+
+
+<!-- Include core NeuroML2 ComponentType definitions -->
+<Include file="PinskyRinzelCA3CompType.xml"/>
+
+
+<pinskyRinzelCA3Cell id="pr1" C="20" I="65" gL="2" gCa="4" gK="8" VL="-50" VCa="100" VK="-70" V1="0" V2="15" V3="10" V4="10" phi="0.1"/>
+
+
+<network id="net1">
+    <population id="pr1pop" component="pr1" size="1"/>
+</network>
+
+<!-- End of NeuroML2 content -->
+        
+
+<Simulation id="sim1" length="220s" step="0.05s" target="net1">
+
+    <Display id="d1" title="Fig XXX" timeScale="1s" xmin="-20" xmax="240" ymin="-60" ymax="30">
+        <Line id ="fn1" quantity="pr1pop[0]/V" scale="1"  color="#000000" timeScale="1s"/>
+    </Display>
+    <Display id="d2" title="Currents..." timeScale="1s" xmin="-20" xmax="240" ymin="-400" ymax="400">
+        <Line id ="fn1" quantity="pr1pop[0]/IL" scale="1"  color="#FFFFFF" timeScale="1s"/>
+        <Line id ="fn2" quantity="pr1pop[0]/IK" scale="1"  color="#FF22FF" timeScale="1s"/>
+        <Line id ="fn3" quantity="pr1pop[0]/ICa" scale="1"  color="#FF0000" timeScale="1s"/>
+    </Display>
+    <Display id="d3" title="N..." timeScale="1s" xmin="-20" xmax="240" ymin="-0.1" ymax="1.1">
+        <Line id ="fn1" quantity="pr1pop[0]/N" scale="1"  color="#FFFFFF" timeScale="1s"/>
+        <Line id ="fn2" quantity="pr1pop[0]/Nss" scale="1"  color="#000000" timeScale="1s"/>
+    </Display>
+    
+</Simulation>
+
+</Lems>
