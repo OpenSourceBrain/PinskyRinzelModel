@@ -37,7 +37,7 @@
 
 
     <!-- Needed to ensure Vs, Vd remain dimensionless... -->
-    <Constant name="MSEC" dimension="time" value="1s"/>
+    <Constant name="MSEC" dimension="time" value="1ms"/>
 
     <Exposure name="Vs" dimension="none"/>
     <Exposure name="Vd" dimension="none"/>
@@ -90,58 +90,34 @@
         <!--
 TODO:
 
-alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0)
-betacd(v)=   (1.0-heav(v+10.0))*(2.0*exp((-53.5-v)/27.0)-alphacd(v))
-alphaqd=  min(0.00002*Cad,0.01)
-betaqd=   0.001
-chid=     min(Cad/250.0,1.0)-->
+            alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0)
+            betacd(v)=   (1.0-heav(v+10.0))*(2.0*exp((-53.5-v)/27.0)-alphacd(v))
+            alphaqd=  min(0.00002*Cad,0.01)
+            betaqd=   0.001
+            chid=     min(Cad/250.0,1.0)-->
 
 
-        <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Ip0/pp)/ (Cm * MSEC)"/>
-        <TimeDerivative variable="Vd" value="(-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp))/ (Cm * MSEC)"/>
-        <TimeDerivative variable="Cad" value="(-0.13*ICad-0.075*Cad) / MSEC"/>
-        <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / MSEC"/>
-        <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / MSEC"/>
-        <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
-        <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
-        <TimeDerivative variable="qd" value="(alphaqd-(alphaqd+betaqd)*qd) / MSEC"/>
+            <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Ip0/pp)/ (Cm * MSEC)"/>
+            <TimeDerivative variable="Vd" value="(-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp))/ (Cm * MSEC)"/>
+            <TimeDerivative variable="Cad" value="(-0.13*ICad-0.075*Cad) / MSEC"/>
+            <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / MSEC"/>
+            <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / MSEC"/>
+            <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
+            <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
+            <TimeDerivative variable="qd" value="(alphaqd-(alphaqd+betaqd)*qd) / MSEC"/>
  
 
-        <OnStart>
-            <StateAssignment variable="Vs" value="VL*0"/>
-            <StateAssignment variable="Vd" value="VL*0"/>
-        </OnStart>
+            <OnStart>
+                <StateAssignment variable="Vs" value="VL"/>
+                <StateAssignment variable="Vd" value="VL"/>
+            </OnStart>
         
-    </Dynamics>
+        </Dynamics>
     
-</ComponentType>
+    </ComponentType>
 
 
 </Lems>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
