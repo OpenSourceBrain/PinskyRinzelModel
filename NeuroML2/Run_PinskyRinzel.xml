@@ -23,11 +23,11 @@
 
     <!-- Test cell-->
     <pinskyRinzelCA3Cell id="pr0" Ip0="0.075" gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
-                     gCa="10" gKahp="0" gKC="0" VNa="60" VCa="80" VK="-75" VL="-60"
-                     Vsyn="0" gc="0.1" pp="0.5" Cm="3" alphac="2" betac="0.1"/>
+                     gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
+                     Vsyn="0" gc="2.1" pp="0.5" Cm="3" alphac="2" betac="0.1"/>
 
     <!-- "Real" cell-->
-    <pinskyRinzelCA3Cell id="pr1" Ip0="0.75" gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
+    <pinskyRinzelCA3Cell id="pr1" Ip0="0.075" gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                      gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                      Vsyn="0" gc="2.1" pp="0.5" Cm="3" alphac="2" betac="0.1"/>
 
@@ -39,25 +39,28 @@
     <!-- End of NeuroML2 content -->
         
 
-    <Simulation id="sim1" length="1500ms" step="0.05ms" target="net1">
+    <Simulation id="sim1" length="150ms" step="0.05ms" target="net1">
 
-        <Display id="d1" title="" timeScale="1ms" xmin="-100" xmax="1600" ymin="-80" ymax="50">
+        <Display id="d1" title="" timeScale="1ms" xmin="-100" xmax="160" ymin="-80" ymax="50">
             <Line id ="Vs" quantity="pr1pop[0]/Vs" scale="1"  color="#000000" timeScale="1ms"/>
             <Line id ="Vd" quantity="pr1pop[0]/Vd" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
     
-        <Display id="d2" title="Currents" timeScale="1s" xmin="-100" xmax="1600" ymin="-.9" ymax=".05">
-            <Line id ="ICad" quantity="pr1pop[0]/ICad" scale="1"  color="#FFFFFF" timeScale="1ms"/>
+        <Display id="d2" title="Currents" timeScale="1s" xmin="-100" xmax="160" ymin="-.9" ymax=".05">
+            <Line id ="ICad" quantity="pr1pop[0]/ICad" scale="1"  color="#000000" timeScale="1ms"/>
         </Display>
     
-        <Display id="d3" title="Ca concentration" timeScale="1s" xmin="-100" xmax="1600" ymin="-0.05" ymax="0.9">
-            <Line id ="Cad" quantity="pr1pop[0]/Cad" scale="1"  color="#FFFFFF" timeScale="1ms"/>
+        <Display id="d3" title="Ca concentration" timeScale="1s" xmin="-100" xmax="160" ymin="-0.05" ymax="0.9">
+            <Line id ="Cad" quantity="pr1pop[0]/Cad" scale="1"  color="#000000" timeScale="1ms"/>
         </Display><!-- -->
     
-        <Display id="d4" title="Activation variables" timeScale="1s" xmin="-100" xmax="1600" ymin="-0.1" ymax="1.1">
+        <Display id="d4" title="Activation variables" timeScale="1s" xmin="-100" xmax="160" ymin="-0.1" ymax="1.1">
             <Line id ="Minfs_Vs" quantity="pr1pop[0]/Minfs_Vs" scale="1" color="#000000" timeScale="1ms"/>
             <Line id ="hs" quantity="pr1pop[0]/hs" scale="1" color="#FF0000" timeScale="1ms"/>
             <Line id ="ns" quantity="pr1pop[0]/ns" scale="1" color="#00FF00" timeScale="1ms"/>
+            <Line id ="cd" quantity="pr1pop[0]/cd" scale="1" color="#FF00FF" timeScale="1ms"/>
+            <Line id ="chid" quantity="pr1pop[0]/chid" scale="1" color="#0000FF" timeScale="1ms"/>
+            <Line id ="qd" quantity="pr1pop[0]/qd" scale="1" color="#00FFFF" timeScale="1ms"/>
         </Display>
     
     </Simulation>
