@@ -4,3 +4,5 @@
 *.gv
 *.png
 *brian.py
+
+.DS_Store
