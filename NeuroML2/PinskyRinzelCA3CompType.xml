@@ -79,18 +79,18 @@
 
 
         <ConditionalDerivedVariable name="alphaqd" dimension="none">
-            <Case condition="Cad .gt. (500)" value="0.01"/>
+            <Case condition="0.00002*Cad .gt. 0.01" value="0.01"/>
             <Case value="0.00002*Cad"/>
         </ConditionalDerivedVariable>
         
         <DerivedVariable name="betaqd" dimension="none" value="0.001"/>
 
         <ConditionalDerivedVariable name="chid" dimension="none">
-            <Case condition="Cad .gt. (250)" value="1"/>
+            <Case condition="Cad/250 .gt. 1" value="1"/>
             <Case value="Cad/250"/>
         </ConditionalDerivedVariable>
 
-        <DerivedVariable name="V" dimension="none" exposure="V" value="Vs"/>
+        <DerivedVariable name="V" dimension="none" exposure="V" value="Vd"/>
         
         <!--
             alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0)
