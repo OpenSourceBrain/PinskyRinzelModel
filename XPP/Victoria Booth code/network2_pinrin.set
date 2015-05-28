@@ -1,0 +1,427 @@
+## Set file for booth_bose.ode on Tue Sep 18 15:22:07 2001
+37   Number of equations and auxiliaries
+44   Number of parameters
+# Numerical stuff
+1    nout
+40    nullcline mesh
+10   CVode
+1000  total
+0.3  DeltaT
+0  T0
+0  Transient
+10000  Bound
+1e-12  DtMin
+1  DtMax
+0.0001  Tolerance
+0.0001  Abs. Tolerance
+40  Max Delay
+100   Eigenvector iterates
+0.001  Eigenvector tolerance
+0.001  Newton tolerance
+0  Poincare plane
+1e-05  Boundary value tolerance
+1e-05  Boundary value epsilon
+20   Boundary value iterates
+0   Poincare None
+1   Poincare variable
+1   Poincare sign
+0   Stop on Section
+1   Delay flag
+999.9  Current time
+999.9  Last Time
+0   MyStart
+1   INFLAG
+# Delays
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+# Bndry conds
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+# Old ICs
+-62.61789574796265  VS1
+-63.03479732643054  VD1
+2.205119969549791  CAD1
+0.9979824344929719  HS1
+0.0007104819486345594  NS1
+0.01078075543653793  SD1
+0.008045203619464125  CD1
+0.2155048595776949  QD1
+-61.79370500131017  VS2
+-62.19567356284967  VD2
+0.393357940413215  CAD2
+0.9975439996885456  HS2
+0.000829511091247434  NS2
+0.01160007285280084  SD2
+0.008677708490854825  CD2
+0.1853647077360475  QD2
+-35.11496901548557  VI1
+0.1371474390521794  WI1
+-35.11483517805746  VI2
+0.1371463762655632  WI2
+-35.11501571449013  VIC
+0.1371475595076431  WIC
+0.0009995871025987055  SI1P1
+0.001087257550197284  SI2P2
+2.962650981222244e-17  SP1I1
+2.962650981222244e-17  SP1P2
+6.448843115801623e-17  SP2I2
+6.448843115801623e-17  SP2P1
+0.0009878132704696418  SINH_C
+# Ending  ICs
+-54.40100275407946  VS1
+-55.40230019572206  VD1
+0.7167532290605613  CAD1
+0.9879396697849259  HS1
+0.002938373754541293  NS1
+0.02060798002341441  SD1
+0.01580722919556649  CD1
+0.1680889315907814  QD1
+-60.64532556619555  VS2
+-61.09098317952427  VD2
+0.3935497674594645  CAD2
+0.9965896296534935  HS2
+0.00106561614833417  NS2
+0.01285398321282752  SD2
+0.009611507034416145  CD2
+0.1951003221044384  QD2
+-35.11569703471191  VI1
+0.1371450978451529  WI1
+-35.1156636788052  VI2
+0.13714516063087  WI2
+-35.1156596687474  VIC
+0.1371451633755165  WIC
+1.592472150240987e-07  SI1P1
+1.478430071263047e-07  SI2P2
+5.032047474676057e-22  SP1I1
+5.032047474676057e-22  SP1P2
+2.328710215572764e-22  SP2I2
+2.328710215572764e-22  SP2P1
+1.459317836246733e-07  SINH_C
+# Parameters
+0.75  ip10
+0  ip1p
+310  ip1on
+315  ip1off
+88  i0
+0.1  gLs
+0.1  gLd
+30  gNa
+15  gKdr
+10  gCa
+0.8  gKahp
+15  gKC
+60  VNa
+80  VCa
+-75  VK
+-60  VL
+0  Vsyn
+2.1  gc
+0.5  pp
+3  Cm
+0  gexc_d
+3.5  gexc_s
+2  omegapp
+1  kappapp
+0.7  ginh
+-80  vrevis
+-10  vtheta
+2  alpha
+0.1  beta
+2  gli
+8  gki
+4.4  gcai
+0.08  phi
+5  gp1i1
+5  gp2i2
+0  vrevpi
+1  kappapi
+2  omegapi
+0  tauid
+0  tauis
+0  ginh_c
+2  alphac
+0.1  betac
+0  tau_inh_c
+# Graphics
+0.7071097251469876  rm
+-0.4999999999826661  rm
+0.4999958366025517  rm
+0.7071038372138506  rm
+0.5000041633974484  rm
+-0.4999999999826661  rm
+0  rm
+0.7071038372138506  rm
+0.7071097251469876  rm
+0    
+1    
+2    
+1    
+0    
+0    
+9    
+2    
+1    
+9    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+0    
+1    
+2    
+1    
+0    
+-1000   
+1000   
+0    
+0   3DFlag
+1   Timeflag
+0   Colorflag
+0   Type
+1  color scale
+0   minscale
+1000   xmax
+0   xmin
+30   ymax
+-70   ymin
+12   zmax
+-12   zmin
+500   
+0.002   
+-20   
+0.02   
+0   
+0.08333333333333333   
+45   Theta
+45   Phi
+0    xshft
+0    yshft
+0    zshft
+0   xlo
+-70   ylo
+0   
+-70   
+1000   xhi
+30   yhi
+1000   
+30   
+# Transpose variables etc
+VS1
+2   n columns
+1   n rows
+1   row skip
+1   col skip
+1   row 0
+# Coupling stuff for H funs
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+# Array plot stuff
+
+1   NCols
+0   Row 1
+50   NRows
+8   RowSkip
+0  Zmin
+1  Zmax
+# Torus information 
+0    Torus flag 1=ON
+6.283185308  Torus period
+# Range information
+ip10
+-1   eq-range stab col
+0   shoot flag 1=on
+10   eq-range steps
+0  eq_range low
+1  eq_range high
+VS1
+VS1
+20   Range steps
+0   Cycle color 1=on
+1   Reset data 1=on
+1   Use old I.C.s 1=yes
+0  Par1 low
+0  Par2 low
+1  Par1 high
+1  Par2 high
+ip10
+0   BVP side
+0   color cycle flag 1=on
+10   BVP range steps
+0  BVP range low
+1  BVP range high
+RHS etc ...
+dVS1/dT=(-GLS*(VS1-VL)-GNA*(MINFS(VS1)^2)*HS1*(VS1-VNA)-GKDR*NS1*(VS1-VK)+(GC/PP)*(VD1
+dVD1/dT=(-GLD*(VD1-VL)-ICAD1-GKAHP*QD1*(VD1-VK)-GKC*CD1*CHID1*(VD1-VK)-GEXC_D*SP2P1*(V
+dCAD1/dT=  -0.13*ICAD1-0.075*CAD1  
+dHS1/dT=  ALPHAHS(VS1)-(ALPHAHS(VS1)+BETAHS(VS1))*HS1  
+dNS1/dT=  ALPHANS(VS1)-(ALPHANS(VS1)+BETANS(VS1))*NS1  
+dSD1/dT=  ALPHASD(VD1)-(ALPHASD(VD1)+BETASD(VD1))*SD1  
+dCD1/dT=  ALPHACD(VD1)-(ALPHACD(VD1)+BETACD(VD1))*CD1  
+dQD1/dT=  ALPHAQD1-(ALPHAQD1+BETAQD)*QD1  
+dVS2/dT=(-GLS*(VS2-VL)-GNA*(MINFS(VS2)^2)*HS2*(VS2-VNA)-GKDR*NS2*(VS2-VK)+(GC/PP)*(VD2
+dVD2/dT=(-GLD*(VD2-VL)-ICAD2-GKAHP*QD2*(VD2-VK)-GKC*CD2*CHID2*(VD2-VK)-GEXC_D*SP1P2*(V
+dCAD2/dT=  -0.13*ICAD2-0.075*CAD2  
+dHS2/dT=  ALPHAHS(VS2)-(ALPHAHS(VS2)+BETAHS(VS2))*HS2  
+dNS2/dT=  ALPHANS(VS2)-(ALPHANS(VS2)+BETANS(VS2))*NS2  
+dSD2/dT=  ALPHASD(VD2)-(ALPHASD(VD2)+BETASD(VD2))*SD2  
+dCD2/dT=  ALPHACD(VD2)-(ALPHACD(VD2)+BETACD(VD2))*CD2  
+dQD2/dT=  ALPHAQD2-(ALPHAQD2+BETAQD)*QD2  
+dVI1/dT= (I0 - GLI*(VI1+60.0) - GKI*WI1*(VI1+84.0) - GCAI*MINFI(VI1)*(VI1-120.0)-GP1I1
+dWI1/dT= PHI*TAUWI(VI1)*(WINFI(VI1)-WI1)  
+dVI2/dT= (I0 - GLI*(VI2+60.0) - GKI*WI2*(VI2+84.0) - GCAI*MINFI(VI2)*(VI2-120.0)-GP2I2
+dWI2/dT= PHI*TAUWI(VI2)*(WINFI(VI2)-WI2)  
+dVIC/dT= (I0 - GLI*(VIC+60.0) - GKI*WIC*(VIC+84.0) - GCAI*MINFI(VIC)*(VIC-120.0)-GP1I1
+dWIC/dT= PHI*TAUWI(VIC)*(WINFI(VIC)-WIC)  
+dSI1P1/dT= ALPHA*(1-SI1P1)*HEAV(VI1-VTHETA) - BETA*SI1P1*HEAV(VTHETA-VI1)  
+dSI2P2/dT= ALPHA*(1-SI2P2)*HEAV(VI2-VTHETA) - BETA*SI2P2*HEAV(VTHETA-VI2)  
+dSP1I1/dT= OMEGAPI*(1-SP1I1)*HEAV(VS1-VTHETA) - KAPPAPI*SP1I1*HEAV(VTHETA-VS1)  
+dSP1P2/dT= OMEGAPP*(1-SP1P2)*HEAV(VS1-VTHETA) - KAPPAPP*SP1P2*HEAV(VTHETA-VS1)  
+dSP2I2/dT= OMEGAPI*(1-SP2I2)*HEAV(VS2-VTHETA) - KAPPAPI*SP2I2*HEAV(VTHETA-VS2)  
+dSP2P1/dT= OMEGAPP*(1-SP2P1)*HEAV(VS2-VTHETA) - KAPPAPP*SP2P1*HEAV(VTHETA-VS2)  
+dSINH_C/dT= ALPHAC*(1-SINH_C)*HEAV(VIC-VTHETA) - BETAC*SINH_C*HEAV(VTHETA-VIC)  
+P1EXC= -GEXC_D*SP2P1*(VD1-VSYN)  
+P1INH= -GINH*SI1P1*(VD1-VREVIS)-GINH_C*DELAY(SINH_C,TAU_INH_C)*(VD1-VREVIS)  
+P1SOMA= -GEXC_S*SP2P1*(VS1-VSYN)  
+P1TOT= -GEXC_D*SP2P1*(VD1-VSYN)-GINH*SI1P1*(VD1-VREVIS)-GINH_C*DELAY(SINH_C,TAU_INH_C
+P2EXC= -GEXC_D*SP1P2*(VD2-VSYN)  
+P2INH= -GINH*SI2P2*(VD2-VREVIS)-GINH_C*DELAY(SINH_C,TAU_INH_C)*(VD2-VREVIS)  
+P2SOMA= -GEXC_S*SP1P2*(VS2-VSYN)  
+P2TOT= -GEXC_D*SP1P2*(VD2-VSYN)-GINH*SI2P2*(VD2-VREVIS)-GINH_C*DELAY(SINH_C,TAU_INH_C
+
+where ...
+ICAD1 =      GCA*SD1*SD1*(VD1-VCA)   
+ALPHAQD1 =   MIN(0.00002*CAD1,0.01)   
+BETAQD =    0.001   
+CHID1 =      MIN(CAD1/250.0,1.0)   
+ICAD2 =      GCA*SD2*SD2*(VD2-VCA)   
+ALPHAQD2 =   MIN(0.00002*CAD2,0.01)   
+CHID2 =        MIN(CAD2/250.0,1.0)   
+IP1 = IP10+IP1P*0.5*(1.0+TANH(T-IP1ON))*0.5*(1.0+TANH(IP1OFF-T))   
+
+User-defined functions:
+ALPHAMS(V) =   0.32*(-46.9-V)/(EXP((-46.9-V)/4.0)-1.0)  
+BETAMS(V) =    0.28*(V+19.9)/(EXP((V+19.9)/5.0)-1.0)  
+MINFS(V) =     ALPHAMS(V)/(ALPHAMS(V)+BETAMS(V))  
+ALPHANS(V) =   0.016*(-24.9-V)/(EXP((-24.9-V)/5.0)-1.0)  
+BETANS(V) =    0.25*EXP(-1.0-0.025*V)  
+ALPHAHS(V) =   0.128*EXP((-43.0-V)/18.0)  
+BETAHS(V) =    4.0/(1.0+EXP((-20.0-V)/5.0))  
+ALPHASD(V) =   1.6/(1.0+EXP(-0.072*(V-5.0)))  
+BETASD(V) =    0.02*(V+8.9)/(EXP((V+8.9)/5.0)-1.0)  
+ALPHACD(V) = (1.0-HEAV(V+10.0))*EXP((V+50.0)/11-(V+53.5)/27)/18.975+HEAV(V+10.0)*2.0*EXP((-53.5-V)/27.0)   
+BETACD(V) =    (1.0-HEAV(V+10.0))*(2.0*EXP((-53.5-V)/27.0)-ALPHACD(V))  
+WINFI(V) =  .5*(1.0+TANH((V+25.0)/11.0))  
+MINFI(V) =  .5*(1.0+TANH((V+1.2)/18.0))  
+TAUWI(V) =  COSH((V+25.0)/(2.0*11.0))  

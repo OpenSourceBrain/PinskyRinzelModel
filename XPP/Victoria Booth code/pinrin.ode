@@ -1,0 +1,58 @@
+# pinrin.ode
+# voltage shifted down so Vrest=-60mV
+# converted pr.ode by GB Ermentrout
+# 
+# 
+#
+%note - many of runs in paper for single-cell used Vna=115, not
+%120 mV, as stated in JCNS paper.  Most results of stationary
+%patterns are unaffected, excpet
+% fig 2E - which shows repetitive somatic spiking as stationary state
+%if Vna=120, rather than 115 as was used for getting the published fig.
+init VVs=-64.6  VVd=-64.5  Cad=0.2  hhs=0.999  nns=0.001  
+init ssd=0.009  ccd=0.007  qqd=0.001  
+#
+par Id=0 
+par ip10=0.75 ip1p=0.0 ip1on=310 ip1off=315
+par gLs=0.1  gLd=0.1  gNa=30  gKdr=15  gCa=10  gKahp=0.8  gKC=15  
+par VNa=60  VCa=80  VK=-75  VL=-60 
+par gc=2.1  pp=0.5  Cm=3  
+# equations for p_1
+VVs'=(-gLs*(VVs-VL)-gNa*(Minfs(VVs)^2)*hhs*(VVs-VNa)-\
+     gKdr*nns*(VVs-VK)+(gc/pp)*(VVd-VVs)+Ip1/pp)/Cm
+VVd'=(-gLd*(VVd-VL)-ICad-gKahp*qqd*(VVd-VK)-gKC*ccd*chid*(VVd-VK)\
+    +(gc*(VVs-VVd)+Id)/(1.0-pp))/Cm
+Cad'=  -0.13*ICad-0.075*Cad
+hhs'=  alphahs(VVs)-(alphahs(VVs)+betahs(VVs))*hhs
+nns'=  alphans(VVs)-(alphans(VVs)+betans(VVs))*nns
+ssd'=  alphasd(VVd)-(alphasd(VVd)+betasd(VVd))*ssd
+ccd'=  alphacd(VVd)-(alphacd(VVd)+betacd(VVd))*ccd
+qqd'=  alphaqd-(alphaqd+betaqd)*qqd
+#
+#
+ICad=     gCa*ssd*ssd*(VVd-VCa)
+alphams(v)=  0.32*(-46.9-v)/(exp((-46.9-v)/4.0)-1.0)
+betams(v)=   0.28*(v+19.9)/(exp((v+19.9)/5.0)-1.0)
+Minfs(v)=    alphams(v)/(alphams(v)+betams(v))
+alphans(v)=  0.016*(-24.9-v)/(exp((-24.9-v)/5.0)-1.0)
+betans(v)=   0.25*exp(-1.0-0.025*v)
+alphahs(v)=  0.128*exp((-43.0-v)/18.0)
+betahs(v)=   4.0/(1.0+exp((-20.0-v)/5.0))
+alphasd(v)=  1.6/(1.0+exp(-0.072*(v-5.0)))
+betasd(v)=   0.02*(v+8.9)/(exp((v+8.9)/5.0)-1.0)
+alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0) 
+betacd(v)=   (1.0-heav(v+10.0))*(2.0*exp((-53.5-v)/27.0)-alphacd(v))
+alphaqd=  min(0.00002*Cad,0.01)
+betaqd=   0.001
+chid=     min(Cad/250.0,1.0)
+# Applied Current
+Ip1=ip10+ip1p*0.5*(1.0+tanh(t-ip1on))*0.5*(1.0+tanh(ip1off-t))
+#
+aux Iapp=Ip1
+#
+@ maxstor=80000,total=1000,bound=10000,xhi=1000,ylo=-70,yhi=30
+@ meth=cvode,atol=0.0001,toler=0.0001,dt=0.3
+done
+
+
+

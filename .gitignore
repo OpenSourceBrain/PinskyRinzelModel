@@ -1,6 +1,5 @@
 /NeuroML2/jsbml.log
 /NeuroML2/velocity.log
-*.ode
 *.gv
 *.png
 *brian.py

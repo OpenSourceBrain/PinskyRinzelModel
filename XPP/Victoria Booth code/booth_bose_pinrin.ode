@@ -1,0 +1,101 @@
+# booth_bose.ode
+# 2 Pinsky-Rinzel pyramidal cells coupled to local interneurons and
+# a common interneuron
+#
+# parameter set files for different network configurations
+# Network 1 - read in network1.set, vary gexc_d
+# Network 2 - read in network2.set, vary gexc_s
+# Network 3 - read in network3.set, vary ginh
+# Network 4 - read in network4.set, vary gexc
+# 
+# parameter values
+par ip10=0.75 ip1p=0.0 ip1on=310 ip1off=315
+par i0=88.0  
+par gLs=0.1  gLd=0.1  gNa=30  gKdr=15  gCa=10  gKahp=0.8  gKC=15  
+par VNa=60  VCa=80  VK=-75  VL=-60  Vsyn=0  
+par gc=2.1  pp=0.5  Cm=3  
+par gexc_d=3.5  gexc_s=0.0 omegapp=2.0 kappapp=1.0 
+par ginh=0.7  vrevis=-80.0  
+par vtheta=-10.0  alpha=2.0  beta=0.1
+par gli=2.0  gki=8.0  gcai=4.4  phi=0.08
+par gp1i1=5.0  gp2i2=5.0 vrevpi=0.0 
+par kappapi=1.0  omegapi=2.0 
+par tauid=0  tauis=0
+par ginh_c=0 alphac=2 betac=0.1 tau_inh_c=0
+# equations for pyramidal cell 1
+Vs1'=(-gLs*(Vs1-VL)-gNa*(Minfs(Vs1)^2)*hs1*(Vs1-VNa)-gKdr*ns1*(Vs1-VK)+(gc/pp)*(Vd1-Vs1)+Ip1/pp-gexc_s*sp2p1*(Vs1-Vsyn))/Cm
+Vd1'=(-gLd*(Vd1-VL)-ICad1-gKahp*qd1*(Vd1-VK)-gKC*cd1*chid1*(Vd1-VK)-gexc_d*sp2p1*(Vd1-Vsyn)+(gc*(Vs1-Vd1))/(1.0-pp)-ginh*si1p1*(Vd1-vrevis)-ginh_c*delay(sinh_c,tau_inh_c)*(Vd1-vrevis))/Cm
+Cad1'=  -0.13*ICad1-0.075*Cad1
+hs1'=  alphahs(Vs1)-(alphahs(Vs1)+betahs(Vs1))*hs1
+ns1'=  alphans(Vs1)-(alphans(Vs1)+betans(Vs1))*ns1
+sd1'=  alphasd(Vd1)-(alphasd(Vd1)+betasd(Vd1))*sd1
+cd1'=  alphacd(Vd1)-(alphacd(Vd1)+betacd(Vd1))*cd1
+qd1'=  alphaqd1-(alphaqd1+betaqd)*qd1
+# equations for p_2
+Vs2'=(-gLs*(Vs2-VL)-gNa*(Minfs(Vs2)^2)*hs2*(Vs2-VNa)-gKdr*ns2*(Vs2-VK)+(gc/pp)*(Vd2-Vs2)+Ip1/pp-gexc_s*sp1p2*(Vs2-Vsyn))/Cm
+Vd2'=(-gLd*(Vd2-VL)-ICad2-gKahp*qd2*(Vd2-VK)-gKC*cd2*chid2*(Vd2-VK)-gexc_d*sp1p2*(Vd2-Vsyn)+(gc*(Vs2-Vd2))/(1.0-pp)-ginh*si2p2*(Vd2-vrevis)-ginh_c*delay(sinh_c,tau_inh_c)*(Vd2-vrevis))/Cm
+Cad2'=  -0.13*ICad2-0.075*Cad2
+hs2'=  alphahs(Vs2)-(alphahs(Vs2)+betahs(Vs2))*hs2
+ns2'=  alphans(Vs2)-(alphans(Vs2)+betans(Vs2))*ns2
+sd2'=  alphasd(Vd2)-(alphasd(Vd2)+betasd(Vd2))*sd2
+cd2'=  alphacd(Vd2)-(alphacd(Vd2)+betacd(Vd2))*cd2
+qd2'=  alphaqd2-(alphaqd2+betaqd)*qd2
+# local interneuron 1
+vi1'= (i0 - gli*(vi1+60.0) - gki*wi1*(vi1+84.0) - gcai*minfi(vi1)*(vi1-120.0)-gp1i1*sp1i1*(vi1-vrevpi))/Cm
+wi1'= phi*tauwi(vi1)*(winfi(vi1)-wi1)
+# local interneuron 2
+vi2'= (i0 - gli*(vi2+60.0) - gki*wi2*(vi2+84.0) - gcai*minfi(vi2)*(vi2-120.0)-gp2i2*sp2i2*(vi2-vrevpi))/Cm
+wi2'= phi*tauwi(vi2)*(winfi(vi2)-wi2)
+# common  interneuron
+vic'= (i0 - gli*(vic+60.0) - gki*wic*(vic+84.0) - gcai*minfi(vic)*(vic-120.0)-gp1i1*sp1i1*(vic-vrevpi)-gp2i2*sp2i2*(vic-vrevpi))/Cm
+wic'= phi*tauwi(vic)*(winfi(vic)-wic)
+# synaptic current gating equations
+si1p1'= alpha*(1-si1p1)*heav(vi1-vtheta) - beta*si1p1*heav(vtheta-vi1)
+si2p2'= alpha*(1-si2p2)*heav(vi2-vtheta) - beta*si2p2*heav(vtheta-vi2)
+sp1i1'= omegapi*(1-sp1i1)*heav(Vs1-vtheta) - kappapi*sp1i1*heav(vtheta-Vs1)
+sp1p2'= omegapp*(1-sp1p2)*heav(Vs1-vtheta) - kappapp*sp1p2*heav(vtheta-Vs1)
+sp2i2'= omegapi*(1-sp2i2)*heav(Vs2-vtheta) - kappapi*sp2i2*heav(vtheta-Vs2)
+sp2p1'= omegapp*(1-sp2p1)*heav(Vs2-vtheta) - kappapp*sp2p1*heav(vtheta-Vs2)
+sinh_c'= alphac*(1-sinh_c)*heav(vic-vtheta) - betac*sinh_c*heav(vtheta-vic)
+# pyramidal cell functions
+ICad1=     gCa*sd1*sd1*(Vd1-VCa)
+alphams(v)=  0.32*(-46.9-v)/(exp((-46.9-v)/4.0)-1.0)
+betams(v)=   0.28*(v+19.9)/(exp((v+19.9)/5.0)-1.0)
+Minfs(v)=    alphams(v)/(alphams(v)+betams(v))
+alphans(v)=  0.016*(-24.9-v)/(exp((-24.9-v)/5.0)-1.0)
+betans(v)=   0.25*exp(-1.0-0.025*v)
+alphahs(v)=  0.128*exp((-43.0-v)/18.0)
+betahs(v)=   4.0/(1.0+exp((-20.0-v)/5.0))
+alphasd(v)=  1.6/(1.0+exp(-0.072*(v-5.0)))
+betasd(v)=   0.02*(v+8.9)/(exp((v+8.9)/5.0)-1.0)
+alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0) 
+betacd(v)=   (1.0-heav(v+10.0))*(2.0*exp((-53.5-v)/27.0)-alphacd(v))
+alphaqd1=  min(0.00002*Cad1,0.01)
+betaqd=   0.001
+chid1=     min(Cad1/250.0,1.0)
+ICad2=     gCa*sd2*sd2*(Vd2-VCa)
+alphaqd2=  min(0.00002*Cad2,0.01)
+chid2=       min(Cad2/250.0,1.0)
+Ip1=ip10+ip1p*0.5*(1.0+tanh(t-ip1on))*0.5*(1.0+tanh(ip1off-t))
+# interneuron functions
+winfi(v) = .5*(1.0+tanh((v+25.0)/11.0))
+minfi(v) = .5*(1.0+tanh((v+1.2)/18.0))
+tauwi(v) = cosh((v+25.0)/(2.0*11.0))
+# initial conditions
+init Vs1=0, Vs2=5
+# post-synaptic currents
+aux p1exc= -gexc_d*sp2p1*(Vd1-Vsyn)
+aux p1inh= -ginh*si1p1*(Vd1-vrevis)-ginh_c*delay(sinh_c,tau_inh_c)*(Vd1-vrevis)
+aux p1soma= -gexc_s*sp2p1*(Vs1-Vsyn)
+aux p1tot= -gexc_d*sp2p1*(Vd1-Vsyn)-ginh*si1p1*(Vd1-vrevis)-ginh_c*delay(sinh_c,tau_inh_c)*(Vd1-vrevis)
+aux p2exc= -gexc_d*sp1p2*(Vd2-Vsyn)
+aux p2inh= -ginh*si2p2*(Vd2-vrevis)-ginh_c*delay(sinh_c,tau_inh_c)*(Vd2-vrevis)
+aux p2soma= -gexc_s*sp1p2*(Vs2-Vsyn)
+aux p2tot= -gexc_d*sp1p2*(Vd2-Vsyn)-ginh*si2p2*(Vd2-vrevis)-ginh_c*delay(sinh_c,tau_inh_c)*(Vd2-vrevis)
+#
+@ delay=40
+@ maxstor=80000,total=1000,bound=10000,xhi=1000,ylo=-70,yhi=30
+@ meth=cvode,atol=0.0001,toler=0.0001,dt=0.3
+done
+
+
