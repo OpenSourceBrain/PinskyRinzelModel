@@ -28,16 +28,23 @@
     <Parameter name="VCa" dimension="none"/>
     <Parameter name="VK" dimension="none"/>
     <Parameter name="VL" dimension="none"/>
-    <Parameter name="Vsyn" dimension="none"/>
     <Parameter name="gc" dimension="none"/>
     <Parameter name="pp" dimension="none"/>
     <Parameter name="Cm" dimension="none"/>
     <Parameter name="alphac" dimension="none"/>
     <Parameter name="betac" dimension="none"/>
 
+    <Parameter name="Id" dimension="none"/>
+    <Parameter name="gnmda" dimension="none"/>
+    <Parameter name="gampa" dimension="none"/>
+
+
 
     <!-- Needed to ensure Vs, Vd remain dimensionless... -->
     <Constant name="MSEC" dimension="time" value="1ms"/>
+
+    <Constant name="Smax" dimension="none" value="125.0"/>
+    <Constant name="Vsyn" dimension="none" value="60.0"/>
 
     <Exposure name="Vs" dimension="none"/>
     <Exposure name="Vd" dimension="none"/>
@@ -48,6 +55,9 @@
     <Exposure name="sd" dimension="none"/>
     <Exposure name="cd" dimension="none"/>
     <Exposure name="qd" dimension="none"/>
+    <Exposure name="Si" dimension="none"/>
+    <Exposure name="Wi" dimension="none"/>
+    <Exposure name="Sisat" dimension="none"/>
 
     <Exposure name="ICad" dimension="none"/>
     
@@ -61,6 +71,13 @@
         <StateVariable name="sd" dimension="none" exposure="sd"/>
         <StateVariable name="cd" dimension="none" exposure="cd"/>
         <StateVariable name="qd" dimension="none" exposure="qd"/>
+
+
+	<!-- Synaptic Dynamics -->
+	<StateVariable name="Si" dimension="none" exposure="Si"/>
+	<StateVariable name="Wi" dimension="none" exposure="Wi"/>
+	<StateVariable name="Sisat" dimension="none" exposure="Sisat"/>
+
 
         <DerivedVariable name="ICad" dimension="none" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/>
 
@@ -117,7 +134,7 @@
         </ConditionalDerivedVariable>
 
         <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Ip0/pp)/ (Cm * MSEC)"/>
-        <TimeDerivative variable="Vd" value="(-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp))/ (Cm * MSEC)"/>
+        <TimeDerivative variable="Vd" value="(Id/(1.0-pp)-Isyn/(1.0-pp)-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp))/ (Cm * MSEC)"/>
         <TimeDerivative variable="Cad" value="(-0.13*ICad-0.075*Cad) / MSEC"/>
         <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / MSEC"/>
         <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / MSEC"/>
@@ -125,6 +142,20 @@
         <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
         <TimeDerivative variable="qd" value="(alphaqd-(alphaqd+betaqd)*qd) / MSEC"/>
 
+
+	<!-- Synaptic Dynamics -->
+	<TimeDerivative variable="Si" value="-Si/150.0" />
+	<TimeDerivative variable="Wi" value="-Wi/2.0" />
+
+	<ConditionalDerivedVariable name="Sisat" dimension="none" exposure="Sisat">
+            <Case condition="Si .gt. Smax" value="Smax"/>
+            <Case value="Si"/>
+        </ConditionalDerivedVariable>	
+
+	<DerivedVariable name="Iampa" dimension="none" value="gampa*Wi*(Vd-Vsyn)"/>
+	<DerivedVariable name="Inmda" dimension="none" value="gnmda*Sisat*(Vd-Vsyn)/(1.0+0.28*exp(-0.062*(Vd-60.0)))"/>
+	<DerivedVariable name="Isyn" dimension="none" value="Iampa+Inmda"/>
+	
 
         <OnStart>
             <StateAssignment variable="Vs" value="VL"/>

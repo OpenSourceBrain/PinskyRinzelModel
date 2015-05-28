@@ -1,7 +1,6 @@
 /NeuroML2/jsbml.log
 /NeuroML2/velocity.log
 *.gv
-*.png
 *brian.py
 
 .DS_Store
