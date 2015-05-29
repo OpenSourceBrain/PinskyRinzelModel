@@ -15,7 +15,7 @@ Figure 2
 
 Figure 3
 --------
-![Figure 3](NeuroML2/Figure 2.png "Reproduced Figure 3")
+![Figure 3](NeuroML2/Figure 3.png "Reproduced Figure 3")
 
 Issues
 ========================
