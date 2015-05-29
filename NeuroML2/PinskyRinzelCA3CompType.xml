@@ -16,7 +16,7 @@
     extends="baseCellMembPotDL"
     description="Preliminary version of Pinsky Rinzel model. Still in development!!">
 
-    <Parameter name="Ip0" dimension="none"/>
+    <Parameter name="Is" dimension="none"/>
     <Parameter name="gLs" dimension="none"/>
     <Parameter name="gLd" dimension="none"/>
     <Parameter name="gNa" dimension="none"/>
@@ -37,6 +37,7 @@
     <Parameter name="Id" dimension="none"/>
     <Parameter name="gnmda" dimension="none"/>
     <Parameter name="gampa" dimension="none"/>
+    <Parameter name="qd0" dimension="none"/>
 
 
 
@@ -133,7 +134,7 @@
             <Case value="0"/>
         </ConditionalDerivedVariable>
 
-        <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Ip0/pp)/ (Cm * MSEC)"/>
+        <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Is/pp)/ (Cm * MSEC)"/>
         <TimeDerivative variable="Vd" value="(Id/(1.0-pp)-Isyn/(1.0-pp)-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp))/ (Cm * MSEC)"/>
         <TimeDerivative variable="Cad" value="(-0.13*ICad-0.075*Cad) / MSEC"/>
         <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / MSEC"/>
@@ -160,6 +161,7 @@
         <OnStart>
             <StateAssignment variable="Vs" value="VL"/>
             <StateAssignment variable="Vd" value="VL"/>
+	    <StateAssignment variable="qd" value="qd0" />
         </OnStart>
         
     </Dynamics>
