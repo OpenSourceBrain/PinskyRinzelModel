@@ -10,7 +10,7 @@
 
     <Include file="PinskyRinzelCA3CompType.xml"/>
 
-    <pinskyRinzelCA3Cell id="prA" Ip0="0.75" gnmda="0" gc="2.1" 
+    <pinskyRinzelCA3Cell id="prA" Is="0.75" gnmda="0" gc="2.1" qd0="0"
 			 gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                          gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                          pp="0.5" Cm="3" alphac="2" betac="0.1"
