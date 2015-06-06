@@ -1,0 +1,104 @@
+<Lems>
+
+
+    <!-- Specify which component to run -->
+    <Target component="sim1"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+
+    <Include file="PinskyRinzelCA3DL.xml"/>
+
+    <pinskyRinzelCA3Cell id="pr2A" Is="0.75 uA" Id="0 uA" gc="2.1 mS" qd0="0"
+                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
+                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
+                        gnmda="0 mS" gampa="0 mS" />
+
+    <pinskyRinzelCA3Cell id="pr2B" Is="-0.5 uA" Id="2.49 uA" gc="2.1 mS" qd0="0"
+                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
+                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
+                        gnmda="0 mS" gampa="0 mS" />
+
+    <pinskyRinzelCA3Cell id="pr2C" Is="2.5 uA" Id="0 uA" gc="2.1 mS" qd0="0"
+                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
+                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
+                        gnmda="0 mS" gampa="0 mS" />
+
+    <pinskyRinzelCA3Cell id="pr2D" Is="2.5 uA" Id="0 uA" gc="10.5 mS" qd0="0"
+                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
+                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
+                        gnmda="0 mS" gampa="0 mS" />
+
+    <pinskyRinzelCA3Cell id="pr2E" Is="-0.5 uA" Id="2 uA" gc="1.425 mS" qd0="0.14"
+                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
+                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
+                        gnmda="0 mS" gampa="0 mS" />
+
+
+    <network id="net1">
+        <population id="prApop" component="pr2A" size="1"/>
+        <population id="prBpop" component="pr2B" size="1"/>
+        <population id="prCpop" component="pr2C" size="1"/>
+        <population id="prDpop" component="pr2D" size="1"/>
+        <population id="prEpop" component="pr2E" size="1"/>
+    </network>
+
+
+    <Simulation id="sim1" length="1500ms" step="0.005ms" target="net1">
+	
+        <Display id="Fig2AVs"  title="Figure 2A somatic input, left: Vs" timeScale="1ms"        xmin="-100" xmax="1600" ymin="-70" ymax="40">
+            <Line id="Vs" quantity="prApop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Fig2ACaq" title="Figure 2A somatic input, right: Ca, q" timeScale="1ms"    xmin="-100" xmax="1600" ymin="-0.05" ymax=".6">
+            <Line id="Ca" quantity="prApop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
+            <Line id="q"  quantity="prApop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
+        </Display>
+
+	<Display id="Fig2BVs"  title="Figure 2B dendritic input, left: Vs" timeScale="1ms"        xmin="-100" xmax="1600" ymin="-70" ymax="40">
+            <Line id="Vs" quantity="prBpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Fig2BCaq" title="Figure 2B dendritic input, right: Ca, q" timeScale="1ms"    xmin="-100" xmax="1600" ymin="-0.05" ymax=".6">
+            <Line id="Ca" quantity="prBpop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
+            <Line id="q"  quantity="prBpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
+        </Display>
+
+ 	<Display id="Fig2CVs"  title="Figure 2C strong somatic input, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
+            <Line id="Vs" quantity="prCpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Fig2CCaq" title="Figure 2C somatic input, right: Ca, q" timeScale="1ms"    xmin="-100" xmax="1600" ymin="-0.05" ymax=".6">
+            <Line id="Ca" quantity="prCpop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
+            <Line id="q"  quantity="prCpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
+        </Display>
+
+ 	<Display id="Fig2DVs"  title="Figure 2D strong somatic input, tight coupling, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
+            <Line id="Vs" quantity="prDpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Fig2DCaq" title="Figure 2D somatic input, tight coupling, right: Ca, q" timeScale="1ms"    xmin="-100" xmax="1600" ymin="-0.05" ymax=".6">
+            <Line id="Ca" quantity="prDpop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
+            <Line id="q"  quantity="prDpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
+        </Display>
+	
+	<Display id="Fig2EVs"  title="Figure 2E dendritic input, weak coupling, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
+            <Line id="Vs" quantity="prEpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Fig2ECaq" title="Figure 2E dendritic input, weak coupling, right: Ca, q" timeScale="1ms"    xmin="-100" xmax="1600" ymin="-0.05" ymax=".6">
+            <Line id="Ca" quantity="prEpop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
+            <Line id="q"  quantity="prEpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
+        </Display>
+
+    </Simulation>
+
+</Lems>
