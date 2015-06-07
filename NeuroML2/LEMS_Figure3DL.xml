@@ -10,11 +10,11 @@
 
     <Include file="PinskyRinzelCA3DL.xml"/>
 
-    <pinskyRinzelCA3Cell id="prA" Is="0.75 uA" gnmda="0 mS" gc="2.1 mS" qd0="0"
-                         gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
-                         gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
-                         pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
-                         Id="0 uA" gampa="0 mS" />
+    <pinskyRinzelCA3Cell id="prA" Is="0.75 uA_per_cm2" gnmda="0 mS_per_cm2" gc="2.1 mS_per_cm2" qd0="0"
+                         gLs="0.1 mS_per_cm2" gLd="0.1 mS_per_cm2" gNa="30 mS_per_cm2" gKdr="15 mS_per_cm2"
+                         gCa="10 mS_per_cm2" gKahp="0.8 mS_per_cm2" gKC="15 mS_per_cm2" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                         pp="0.5" Cm="3 uF_per_cm2" alphac="2" betac="0.1"
+                         Id="0 uA_per_cm2" gampa="0 mS_per_cm2" />
 
     <network id="net1">
         <population id="pr1pop" component="prA" size="1"/>

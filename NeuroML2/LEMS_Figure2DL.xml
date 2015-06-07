@@ -12,35 +12,35 @@
 
     <Include file="PinskyRinzelCA3DL.xml"/>
 
-    <pinskyRinzelCA3Cell id="pr2A" Is="0.75 uA" Id="0 uA" gc="2.1 mS" qd0="0"
-                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
-                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
-                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
-                        gnmda="0 mS" gampa="0 mS" />
+    <pinskyRinzelCA3Cell id="pr2A" Is="0.75 uA_per_cm2" Id="0 uA_per_cm2" gc="2.1 mS_per_cm2" qd0="0"
+                        gLs="0.1 mS_per_cm2" gLd="0.1 mS_per_cm2" gNa="30 mS_per_cm2" gKdr="15 mS_per_cm2"
+                        gCa="10 mS_per_cm2" gKahp="0.8 mS_per_cm2" gKC="15 mS_per_cm2" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF_per_cm2" alphac="2" betac="0.1"
+                        gnmda="0 mS_per_cm2" gampa="0 mS_per_cm2" />
 
-    <pinskyRinzelCA3Cell id="pr2B" Is="-0.5 uA" Id="2.49 uA" gc="2.1 mS" qd0="0"
-                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
-                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
-                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
-                        gnmda="0 mS" gampa="0 mS" />
+    <pinskyRinzelCA3Cell id="pr2B" Is="-0.5 uA_per_cm2" Id="2.49 uA_per_cm2" gc="2.1 mS_per_cm2" qd0="0"
+                        gLs="0.1 mS_per_cm2" gLd="0.1 mS_per_cm2" gNa="30 mS_per_cm2" gKdr="15 mS_per_cm2"
+                        gCa="10 mS_per_cm2" gKahp="0.8 mS_per_cm2" gKC="15 mS_per_cm2" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF_per_cm2" alphac="2" betac="0.1"
+                        gnmda="0 mS_per_cm2" gampa="0 mS_per_cm2" />
 
-    <pinskyRinzelCA3Cell id="pr2C" Is="2.5 uA" Id="0 uA" gc="2.1 mS" qd0="0"
-                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
-                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
-                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
-                        gnmda="0 mS" gampa="0 mS" />
+    <pinskyRinzelCA3Cell id="pr2C" Is="2.5 uA_per_cm2" Id="0 uA_per_cm2" gc="2.1 mS_per_cm2" qd0="0"
+                        gLs="0.1 mS_per_cm2" gLd="0.1 mS_per_cm2" gNa="30 mS_per_cm2" gKdr="15 mS_per_cm2"
+                        gCa="10 mS_per_cm2" gKahp="0.8 mS_per_cm2" gKC="15 mS_per_cm2" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF_per_cm2" alphac="2" betac="0.1"
+                        gnmda="0 mS_per_cm2" gampa="0 mS_per_cm2" />
 
-    <pinskyRinzelCA3Cell id="pr2D" Is="2.5 uA" Id="0 uA" gc="10.5 mS" qd0="0"
-                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
-                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
-                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
-                        gnmda="0 mS" gampa="0 mS" />
+    <pinskyRinzelCA3Cell id="pr2D" Is="2.5 uA_per_cm2" Id="0 uA_per_cm2" gc="10.5 mS_per_cm2" qd0="0"
+                        gLs="0.1 mS_per_cm2" gLd="0.1 mS_per_cm2" gNa="30 mS_per_cm2" gKdr="15 mS_per_cm2"
+                        gCa="10 mS_per_cm2" gKahp="0.8 mS_per_cm2" gKC="15 mS_per_cm2" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF_per_cm2" alphac="2" betac="0.1"
+                        gnmda="0 mS_per_cm2" gampa="0 mS_per_cm2" />
 
-    <pinskyRinzelCA3Cell id="pr2E" Is="-0.5 uA" Id="2 uA" gc="1.425 mS" qd0="0.14"
-                        gLs="0.1 mS" gLd="0.1 mS" gNa="30 mS" gKdr="15 mS"
-                        gCa="10 mS" gKahp="0.8 mS" gKC="15 mS" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
-                        pp="0.5" Cm="3 uF" alphac="2" betac="0.1"
-                        gnmda="0 mS" gampa="0 mS" />
+    <pinskyRinzelCA3Cell id="pr2E" Is="-0.5 uA_per_cm2" Id="2 uA_per_cm2" gc="1.425 mS_per_cm2" qd0="0.14"
+                        gLs="0.1 mS_per_cm2" gLd="0.1 mS_per_cm2" gNa="30 mS_per_cm2" gKdr="15 mS_per_cm2"
+                        gCa="10 mS_per_cm2" gKahp="0.8 mS_per_cm2" gKC="15 mS_per_cm2" VNa="60 mV" VCa="80 mV" VK="-75 mV" VL="-60 mV"
+                        pp="0.5" Cm="3 uF_per_cm2" alphac="2" betac="0.1"
+                        gnmda="0 mS_per_cm2" gampa="0 mS_per_cm2" />
 
 
     <network id="net1">

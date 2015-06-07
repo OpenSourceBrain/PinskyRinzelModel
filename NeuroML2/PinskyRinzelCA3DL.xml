@@ -8,50 +8,39 @@
 
     Note: Not yet complete!
     Contact p.gleeson =at= ucl.ac.uk if you are interested in using/contributing to this model.
-    
-
+ 
 -->
 
 <ComponentType name="pinskyRinzelCA3Cell"
     extends="baseCellMembPotDL"
     description="Preliminary version of Pinsky Rinzel model. Still in development!!">
 
-    <Parameter name="Is" dimension="current"/>
-    <Parameter name="gLs" dimension="conductance"/>
-    <Parameter name="gLd" dimension="conductance"/>
-    <Parameter name="gNa" dimension="conductance"/>
-    <Parameter name="gKdr" dimension="conductance"/>
-    <Parameter name="gCa" dimension="conductance"/>
-    <Parameter name="gKahp" dimension="conductance"/>
-    <Parameter name="gKC" dimension="conductance"/>
+    <Parameter name="Is" dimension="currentDensity"/>
+    <Parameter name="gLs" dimension="conductanceDensity"/>
+    <Parameter name="gLd" dimension="conductanceDensity"/>
+    <Parameter name="gNa" dimension="conductanceDensity"/>
+    <Parameter name="gKdr" dimension="conductanceDensity"/>
+    <Parameter name="gCa" dimension="conductanceDensity"/>
+    <Parameter name="gKahp" dimension="conductanceDensity"/>
+    <Parameter name="gKC" dimension="conductanceDensity"/>
     <Parameter name="VNa" dimension="voltage"/>
     <Parameter name="VCa" dimension="voltage"/>
     <Parameter name="VK" dimension="voltage"/>
     <Parameter name="VL" dimension="voltage"/>
-    <Parameter name="gc" dimension="conductance"/>
+    <Parameter name="gc" dimension="conductanceDensity"/>
     <Parameter name="pp" dimension="none"/>
-    <Parameter name="Cm" dimension="capacitance"/>
+    <Parameter name="Cm" dimension="specificCapacitance"/>
     <Parameter name="alphac" dimension="none"/>
     <Parameter name="betac" dimension="none"/>
 
-    <Parameter name="Id" dimension="current"/>
-    <Parameter name="gnmda" dimension="conductance"/>
-    <Parameter name="gampa" dimension="conductance"/>
+    <Parameter name="Id" dimension="currentDensity"/>
+    <Parameter name="gnmda" dimension="conductanceDensity"/>
+    <Parameter name="gampa" dimension="conductanceDensity"/>
     <Parameter name="qd0" dimension="none"/>
-
-
-
-
-    <Constant name="MSEC" dimension="time" value="1 ms"/>
-    <Constant name="mV" dimension="voltage" value="1 mV"/>
-    <Constant name="uA" dimension="current" value="1 uA"/>
-
-    <Constant name="Smax" dimension="none" value="125.0"/>
-    <Constant name="Vsyn" dimension="voltage" value="60.0 mV"/>
-
+    
     <Exposure name="Vs" dimension="voltage"/>
     <Exposure name="Vd" dimension="voltage"/>
-    
+    <Exposure name="ICad" dimension="currentDensity"/>
     <Exposure name="Cad" dimension="none"/>
     <Exposure name="hs" dimension="none"/>
     <Exposure name="ns" dimension="none"/>
@@ -60,8 +49,18 @@
     <Exposure name="qd" dimension="none"/>
     <Exposure name="Si" dimension="none"/>
     <Exposure name="Wi" dimension="none"/>
+    
+    
+    <!-- Normalizing Constants -->
+    <Constant name="ms" dimension="time" value="1 ms"/>
+    <Constant name="mV" dimension="voltage" value="1 mV"/>
+    <Constant name="uA_per_cm2" dimension="currentDensity" value="1 uA_per_cm2"/>
+    
+    <!-- Model Constants -->
+    <Constant name="Smax" dimension="none" value="125.0"/>
+    <Constant name="Vsyn" dimension="voltage" value="60.0 mV"/>
+    <Constant name="betaqd" dimension="none" value="0.001"/>
 
-    <Exposure name="ICad" dimension="current"/>
     
     <Dynamics>
         
@@ -75,13 +74,14 @@
         <StateVariable name="qd" dimension="none" exposure="qd"/>
 
 
-	<!-- Synaptic Dynamics -->
-	<StateVariable name="Si" dimension="none" exposure="Si"/>
-	<StateVariable name="Wi" dimension="none" exposure="Wi"/>
-	<StateVariable name="Sisat" dimension="none"/>
 
-
-        <DerivedVariable name="ICad" dimension="current" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/>
+        <!-- Synaptic Dynamics -->
+        <StateVariable name="Si" dimension="none" exposure="Si"/>
+        <StateVariable name="Wi" dimension="none" exposure="Wi"/>
+        <StateVariable name="Sisat" dimension="none"/>
+        <DerivedVariable name="ICad" dimension="currentDensity" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/>
+        
+        
 
         <DerivedVariable name="alphams_Vs" dimension="none" value="0.32*(-46.9-Vs/mV)/(exp((-46.9-Vs/mV)/4.0)-1.0)"/>
         <DerivedVariable name="betams_Vs" dimension="none" value="0.28*(Vs/mV+19.9)/(exp((Vs/mV+19.9)/5.0)-1.0)"/>
@@ -96,75 +96,59 @@
         <DerivedVariable name="alphasd_Vd" dimension="none" value="1.6/(1.0+exp(-0.072*(Vd/mV-5.0)))"/>
         <DerivedVariable name="betasd_Vd" dimension="none" value="0.02*(Vd/mV+8.9)/(exp((Vd/mV+8.9)/5.0)-1.0)"/>
 
-
         <ConditionalDerivedVariable name="alphaqd" dimension="none">
             <Case condition="0.00002*Cad .gt. 0.01" value="0.01"/>
             <Case value="0.00002*Cad"/>
         </ConditionalDerivedVariable>
         
-        <DerivedVariable name="betaqd" dimension="none" value="0.001"/>
-
         <ConditionalDerivedVariable name="chid" dimension="none">
             <Case condition="Cad/250 .gt. 1" value="1"/>
             <Case value="Cad/250"/>
         </ConditionalDerivedVariable>
 
-        <DerivedVariable name="V" dimension="voltage" exposure="V" value="Vd"/>
-        
-        <!--
-            alphacd(v)=(1.0-heav(v+10.0))*exp((v+50.0)/11-(v+53.5)/27)/18.975+heav(v+10.0)*2.0*exp((-53.5-v)/27.0)
-            
-                exp((v+50.0)/11-(v+53.5)/27)/18.975    (1.0-heav(v+10.0))     so if v <-10
-
-                2.0*exp((-53.5-v)/27.0)                heav(v+10.0)           so if v >=-10
-            
-            betacd(v)=   (1.0-heav(v+10.0))*(2.0*exp((-53.5-v)/27.0)-alphacd(v))
-        
-                (2.0*exp((-53.5-v)/27.0)-alphacd(v))   (1.0-heav(v+10.0))     so if v <-10
-        
-        -->
-
         <ConditionalDerivedVariable name="alphacd_Vd" dimension="none">
-            <Case condition="V .lt. -10*mV" value="exp((V/mV+50.0)/11-(V/mV+53.5)/27)/18.975"/>
-            <Case value="2.0*exp((-53.5-V/mV)/27.0)"/>
+            <Case condition="Vd .lt. -10*mV" value="exp((Vd/mV+50.0)/11-(Vd/mV+53.5)/27)/18.975"/>
+            <Case value="2.0*exp((-53.5-Vd/mV)/27.0)"/>
         </ConditionalDerivedVariable>
         
-        
         <ConditionalDerivedVariable name="betacd_Vd" dimension="none">
-            <Case condition="V .lt. -10*mV" value="(2.0*exp((-53.5-V/mV)/27.0)-alphacd_Vd)"/>
+            <Case condition="Vd .lt. -10*mV" value="(2.0*exp((-53.5-Vd/mV)/27.0)-alphacd_Vd)"/>
             <Case value="0"/>
         </ConditionalDerivedVariable>
 
+
+
         <TimeDerivative variable="Vs" value="(-gLs*(Vs-VL)-gNa*(Minfs_Vs^2)*hs*(Vs-VNa)-gKdr*ns*(Vs-VK)+(gc/pp)*(Vd-Vs)+Is/pp) / Cm"/>
         <TimeDerivative variable="Vd" value="(Id/(1.0-pp)-Isyn/(1.0-pp)-gLd*(Vd-VL)-ICad-gKahp*qd*(Vd-VK)-gKC*cd*chid*(Vd-VK)+(gc*(Vs-Vd))/(1.0-pp)) / Cm"/>
-        <TimeDerivative variable="Cad" value="(-0.13*ICad/uA-0.075*Cad) / MSEC"/>
-        <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / MSEC"/>
-        <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / MSEC"/>
-        <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
-        <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
-        <TimeDerivative variable="qd" value="(alphaqd-(alphaqd+betaqd)*qd) / MSEC"/>
+        <TimeDerivative variable="Cad" value="(-0.13*ICad/uA_per_cm2-0.075*Cad) / ms"/>
+        <TimeDerivative variable="hs" value="(alphahs_Vs-(alphahs_Vs+betahs_Vs)*hs) / ms"/>
+        <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / ms"/>
+        <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / ms"/>
+        <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / ms"/>
+        <TimeDerivative variable="qd" value="(alphaqd-(alphaqd+betaqd)*qd) / ms"/>
 
 
-	<!-- Synaptic Dynamics -->
-	<TimeDerivative variable="Si" value="-Si/150.0" />
-	<TimeDerivative variable="Wi" value="-Wi/2.0" />
+        <!-- Synaptic Dynamics -->
+        <TimeDerivative variable="Si" value="-Si/150.0" />
+        <TimeDerivative variable="Wi" value="-Wi/2.0" />
 
-	<ConditionalDerivedVariable name="Sisat" dimension="none">
+        <ConditionalDerivedVariable name="Sisat" dimension="none">
             <Case condition="Si .gt. Smax" value="Smax"/>
             <Case value="Si"/>
         </ConditionalDerivedVariable>	
 
-	<DerivedVariable name="Iampa" dimension="current" value="gampa*Wi*(Vd-Vsyn)"/>
-	<DerivedVariable name="Inmda" dimension="current" value="gnmda*Sisat*(Vd-Vsyn)/(1.0+0.28*exp(-0.062*(Vd/mV-60.0)))"/>
-	<DerivedVariable name="Isyn" dimension="current" value="Iampa+Inmda"/>
-	
+        <DerivedVariable name="Iampa" dimension="currentDensity" value="gampa*Wi*(Vd-Vsyn)"/>
+        <DerivedVariable name="Inmda" dimension="currentDensity" value="gnmda*Sisat*(Vd-Vsyn)/(1.0+0.28*exp(-0.062*(Vd/mV-60.0)))"/>
+        <DerivedVariable name="Isyn" dimension="currentDensity" value="Iampa+Inmda"/>
+
+
 
         <OnStart>
             <StateAssignment variable="Vs" value="VL"/>
             <StateAssignment variable="Vd" value="VL"/>
             <StateAssignment variable="qd" value="qd0" />
         </OnStart>
-        
+
     </Dynamics>
     
 </ComponentType>
