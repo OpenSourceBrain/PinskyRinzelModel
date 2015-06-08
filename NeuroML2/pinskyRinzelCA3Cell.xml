@@ -16,7 +16,7 @@
     description="Preliminary version of Pinsky Rinzel model. Still in development!!">
 
     <!-- baseCellMembPot compatibility -->
-    <Exposure name="V" dimension="voltage"/>
+    <Exposure name="v" dimension="voltage"/>
 
     <Parameter name="Is" dimension="currentDensity"/>
     <Parameter name="gLs" dimension="conductanceDensity"/>
@@ -77,7 +77,7 @@
         <StateVariable name="qd" dimension="none" exposure="qd"/>
 
         <!-- baseCellMembPot compatibility -->
-        <DerivedVariable name="V" dimension="voltage" value="Vs" exposure="V"/>
+        <DerivedVariable name="v" dimension="voltage" value="Vs" exposure="v"/>
 
         <!-- Synaptic Dynamics -->
         <StateVariable name="Si" dimension="none" exposure="Si"/>
