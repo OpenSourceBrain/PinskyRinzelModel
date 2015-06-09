@@ -12,9 +12,12 @@
 
 -->
 
-<ComponentType name="pinskyRinzelCA3Cell"
+<ComponentType name="pinskyRinzelCA3CellDL"
     extends="baseCellMembPotDL"
     description="Preliminary version of Pinsky Rinzel model. Still in development!!">
+
+    <!-- baseCellMembPotDL compatibility -->
+    <Exposure name="V" dimension="none"/>
 
     <Parameter name="Is" dimension="none"/>
     <Parameter name="gLs" dimension="none"/>
@@ -73,11 +76,13 @@
         <StateVariable name="cd" dimension="none" exposure="cd"/>
         <StateVariable name="qd" dimension="none" exposure="qd"/>
 
+        <!-- baseCellMembPot compatibility -->
+        <DerivedVariable name="V" dimension="none" value="Vs" exposure="V"/>
 
-	<!-- Synaptic Dynamics -->
-	<StateVariable name="Si" dimension="none" exposure="Si"/>
-	<StateVariable name="Wi" dimension="none" exposure="Wi"/>
-	<StateVariable name="Sisat" dimension="none" exposure="Sisat"/>
+        <!-- Synaptic Dynamics -->
+        <StateVariable name="Si" dimension="none" exposure="Si"/>
+        <StateVariable name="Wi" dimension="none" exposure="Wi"/>
+        <StateVariable name="Sisat" dimension="none" exposure="Sisat"/>
 
 
         <DerivedVariable name="ICad" dimension="none" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/>
