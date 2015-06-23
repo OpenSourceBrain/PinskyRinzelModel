@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+
+    <ionChannel id="Kdr" type="KdrChannelPR" conductance="0 pS" />
+
+    <ComponentType name="KdrChannelPR" extends="baseIonChannelPR">
+
+        <Dynamics>
+            
+            <StateVariable name="ns" dimension="none"/>
+            
+            <DerivedVariable name="alphans_Vs" dimension="none" value="0.016*(-24.9-Vs/MVOLT)/(exp((-24.9-Vs/MVOLT)/5.0)-1.0)"/>
+            <DerivedVariable name="betans_Vs" dimension="none" value="0.25*exp(-1.0-0.025*Vs/MVOLT)"/>
+            
+            <TimeDerivative variable="ns" value="(alphans_Vs-(alphans_Vs+betans_Vs)*ns) / MSEC"/>
+            
+            <DerivedVariable name="fopen" dimension="none" value="ns" exposure="fopen"/>
+            
+            <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
+            
+        </Dynamics>
+        
+    </ComponentType>
+
+</neuroml>
+
+

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="CA3pyramidalPR">
+
+    <include href="twoCompartmentCell.cell.nml"/>
+
+    <include href="somaLeak.channel.nml"/>
+    <include href="Na.channel.nml"/>
+    <include href="Kdr.channel.nml"/>
+    
+    <include href="dendriteLeak.channel.nml"/>
+    <include href="Cad.channel.nml"/>
+    <include href="Kahp.channel.nml"/>
+    <include href="KC.channel.nml"/>
+    
+
+    <twoCompartmentCell id="CA3pyramidalPR">
+        
+        <notes></notes>
+        
+        <morphology id="morphology">
+            
+            <segment id="0" name="soma">
+                <proximal x="0.0" y="0.0" z="0.0" diameter="3.134"/>
+                <distal x="0.0" y="100.0" z="0.0" diameter="3.134"/>
+            </segment>
+            
+            <segment id="1" name="dend">
+                <parent segment="0"/>
+                <proximal x="0.0" y="100.0" z="0.0" diameter="3.134"/>
+                <distal x="0.0" y="200.0" z="0.0" diameter="3.134"/>
+            </segment>
+
+            <segmentGroup id="soma" neuroLexId="sao864921383">
+                <member segment="0"/>
+            </segmentGroup>
+            
+            <segmentGroup id="dend" neuroLexId="sao864921383">
+                <member segment="1"/>
+            </segmentGroup>
+
+            <segmentGroup id="all">
+                <include segmentGroup="soma"/>
+                <include segmentGroup="dend"/>
+            </segmentGroup>
+            
+            <segmentGroup id="soma_group" neuroLexId="GO:0043025">
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            
+            <segmentGroup id="dendrite_group" neuroLexId="GO:0030425">
+                <include segmentGroup="dend"/>
+            </segmentGroup>
+
+            
+        </morphology>
+        
+        <biophysicalProperties>
+            
+            
+
+
+
+            <membraneProperties>
+                
+                <channelDensity id="somaLeakChannels" ionChannel="somaLeak" condDensity="0.1 mS_per_cm2" erev="-60 mV"
+                    segmentGroup="soma_group" ion="non-specific" />
+
+<!--                <channelDensity id="somaNaChannels" ionChannel="Na" condDensity="30.0 mS_per_cm2" erev="60 mV"-->
+<!--                    segmentGroup="soma_group" ion="na"/>-->
+<!---->
+<!--                <channelDensity id="somaKdrChannels" ionChannel="Kdr" condDensity="15.0 mS_per_cm2" erev="-75 mV"-->
+<!--                    segmentGroup="soma_group" ion="k"/>-->
+
+
+                <!-- DOES NOT WORK WITH channelDensities[segmentGroup='dendrite_group']/iDensity -->
+                
+                <channelDensity id="dendriteLeakChannels" ionChannel="dendriteLeak" condDensity="0.1 mS_per_cm2"
+                    erev="-60 mV" segmentGroup="dendrite_group" ion="non-specific" />
+
+<!--                <channelDensity id="CadChannels" ionChannel="Cad" condDensity="10 mS_per_cm2" erev="80 mV"-->
+<!--                    segmentGroup="dendrite_group" ion="ca" />-->
+
+<!--                <channelDensity id="KahpChannels" ionChannel="Kahp" condDensity="0.8 mS_per_cm2" erev="-75 mV"-->
+<!--                    segmentGroup="dendrite_group" ion="k" />-->
+
+<!--                <channelDensity id="KCChannels" ionChannel="KC" condDensity="15 mS_per_cm2" erev="-75 mV"-->
+<!--                    segmentGroup="dendrite_group" ion="k" />-->
+
+
+                <spikeThresh value="0 mV"/>
+                
+                <specificCapacitance value="3.0 uF_per_cm2"/>
+                
+                <initMembPotential value="-40.0 mV"/>
+                
+            </membraneProperties>
+            
+            <intracellularProperties />
+            
+        </biophysicalProperties>
+        
+    </twoCompartmentCell>
+    
+</neuroml>
