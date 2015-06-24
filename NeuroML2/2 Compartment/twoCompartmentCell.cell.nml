@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+
+    
+    <ComponentType name="twoCompartmentCell"
+        extends="baseCellMembPot"
+        description="">
+        
+        <Child name="notes" type="notes"/>
+        <Child name="annotation" type="annotation"/>
+        
+        <Child name="morphology" type="morphology"/>
+        
+        <Child name="biophysicalProperties" type="biophysicalProperties"/>
+        
+        <Attachments name="synapses" type="basePointCurrent"/>
+        
+        <Children name="channelDensitiesSoma" type="channelDensitiesSoma"/>
+        <Children name="channelDensitiesDendrite" type="channelDensitiesDendrite"/>
+        
+        <Exposure name="Vs" dimension="voltage"/>
+        <Exposure name="Vd" dimension="voltage"/>
+        <Exposure name="iDensityCa" dimension="currentDensity"/>
+        
+        
+        <Exposure name="spiking" dimension="none"/>
+        <Exposure name="debugVal" dimension="none"/>
+        
+        <Exposure name="iDensitySoma" dimension="currentDensity"/>
+        <Exposure name="iDensityDendrite" dimension="currentDensity"/>
+        
+        
+        <Exposure name="iSyn" dimension="current"/>
+        
+        <Exposure name="surfaceArea" dimension="area"/>
+        
+        <Text name="neuroLexId"/>
+        
+        <Constant name="UF_PER_CM2" dimension="specificCapacitance" value="1 uF_per_cm2"/>
+        <Constant name="UA_PER_CM2" dimension="currentDensity" value="1 uA_per_cm2"/>
+        <Constant name="UA" dimension="current" value="1 uA"/>
+        <Constant name="UF" dimension="capacitance" value="1 uF"/>
+        <Constant name="MV" dimension="voltage" value="1 mV"/>
+        
+        <Dynamics>
+            
+            
+            
+            
+            <StateVariable name="spiking" exposure="spiking" dimension="none"/>
+            
+            <DerivedVariable name="initMembPot" dimension="voltage" select="biophysicalProperties/membraneProperties/initMembPotential/value"/>
+            
+            <DerivedVariable name="thresh" dimension="voltage" select="biophysicalProperties/membraneProperties/spikeThresh/value"/>
+            
+            <DerivedVariable name="surfaceArea" exposure="surfaceArea" dimension="area" select="morphology/segments[*]/surfaceArea" reduce="add"/>
+            
+            
+            <DerivedVariable name="iSyn" dimension="current" exposure="iSyn" select="synapses[*]/i" reduce="add" />
+
+            <!-- Two Compartment Variables -->
+            
+            <StateVariable name="v" exposure="v" dimension="voltage"/>
+            <StateVariable name="Vs" exposure="Vs" dimension="voltage"/>
+            <StateVariable name="Vd" exposure="Vd" dimension="voltage"/>
+            
+            <DerivedVariable variable="v" value="Vs" dimension="voltage" />
+            
+            
+            <DerivedVariable name="iDensityCa" exposure="iDensityCa" dimension="currentDensity"
+                select="channelDensitiesDendrite/channelDensities[ion='ca']/iDensity" reduce="add"/>
+            
+            <DerivedVariable name="iDensitySoma" exposure="iDensitySoma" dimension="currentDensity"
+                select="channelDensitiesSoma/channelDensities[*]/iDensity" reduce="add"/>
+            
+            <DerivedVariable name="iDensityDendrite" exposure="iDensityDendrite" dimension="currentDensity"
+                select="channelDensitiesDendrite/channelDensities[*]/iDensity" reduce="add"/>
+            
+            <DerivedVariable name="Cm" dimension="specificCapacitance" select="biophysicalProperties/membraneProperties/totSpecCap" />
+            
+            <DerivedVariable name="surfaceAreaSoma" dimension="area" select="morphology/segments[name='soma']/surfaceArea" reduce="add"/>
+            
+            <DerivedVariable name="surfaceAreaDendrite" dimension="area" select="morphology/segments[name='dend']/surfaceArea" reduce="add"/>
+            
+            <DerivedVariable name="surfaceAreaProportion" dimension="none"
+                value="surfaceAreaSoma / (surfaceAreaSoma + surfaceAreaDendrite)" />
+            
+            <DerivedVariable name="couplingStrength" dimension="none"
+                select="channelDensitiesSoma/couplingStrength" />
+            
+            <DerivedVariable name="iDensityCoupling" dimension="currentDensity"
+                value="couplingStrength*(Vd-Vs)/MV*UA_PER_CM2" />
+            
+            <DerivedVariable name="iDensityCouplingSoma" dimension="currentDensity"
+                value="iDensityCoupling/surfaceAreaProportion" />
+            
+            <DerivedVariable name="iDensityCouplingDendrite" dimension="currentDensity"
+                value="-iDensityCoupling/(1.0-surfaceAreaProportion)" />
+            
+            <DerivedVariable name="iDensityInjectionSoma" dimension="currentDensity"
+                select="channelDensitiesSoma/iDensityInjection" />
+            
+            <DerivedVariable name="iDensityInjectionDendrite" dimension="currentDensity"
+                select="channelDensitiesDendrite/iDensityInjection" />
+            
+            <DerivedVariable name="iDensityAmpa" dimension="currentDensity"
+                select="channelDensitiesDendrite/AmpaChannels/iDensity" />
+                
+            <DerivedVariable name="iDensityNmda" dimension="currentDensity"
+                select="channelDensitiesDendrite/NmdaChannels/iDensity" />
+                
+            <DerivedVariable name="iDensitySynapse" dimension="currentDensity"
+                value="iDensityAmpa+iDensityNmda" />
+            
+            <TimeDerivative variable="Vs"
+                value="(iDensitySoma+iDensityCouplingSoma+iDensityInjectionSoma/surfaceAreaProportion)/Cm" />
+                
+            <TimeDerivative variable="Vd"
+                value="(iDensityDendrite+iDensityCouplingDendrite+iDensityInjectionDendrite/(1.0-surfaceAreaProportion)-iDensitySynapse+iDensitySynapse/(1-surfaceAreaProportion))/Cm" />
+
+            <DerivedVariable name="debugVal" value="Vd" exposure="debugVal" />
+            
+            <OnStart>
+                <StateAssignment variable="spiking" value="0"/>
+                <StateAssignment variable="v" value="initMembPot"/>
+                <StateAssignment variable="Vs" value="initMembPot"/>
+                <StateAssignment variable="Vd" value="initMembPot"/>
+            </OnStart>
+            
+            <OnCondition test="v .gt. thresh .and. spiking .lt. 0.5">
+                <StateAssignment variable="spiking" value="1"/>
+                <EventOut port="spike"/>
+            </OnCondition>
+            
+            <OnCondition test="v .lt. thresh">
+                <StateAssignment variable="spiking" value="0"/>
+            </OnCondition>
+            
+        </Dynamics>
+        
+    </ComponentType>
+</neuroml>
+

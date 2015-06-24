@@ -7,18 +7,15 @@
         
         <Parameter name="qd0" dimension="none" />
         
-        <Requirement name="iCa" dimension="current" />
-        <Requirement name="surfaceArea" dimension="area" />
+        <Requirement name="iDensityCa" dimension="currentDensity" />
         
         <Constant name="betaqd" dimension="none" value="0.001"/>
         
         <Dynamics>
             
-            <DerivedVariable name="ICad" dimension="currentDensity" value="-iCa / surfaceArea"/>
-            
             <StateVariable name="Cad" dimension="none"/>
+            <TimeDerivative variable="Cad" value="(0.13*iDensityCa/UAMP_PER_CM2-0.075*Cad) / MSEC"/>
             
-            <TimeDerivative variable="Cad" value="(-0.13*ICad/UAMP_PER_CM2-0.075*Cad) / MSEC"/>
             
             <StateVariable name="qd" dimension="none"/>
             

@@ -18,7 +18,7 @@
             
             <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
             
-            <DerivedVariable name="fopen" dimension="none" value="sd^2" exposure="fopen"/>
+            <DerivedVariable name="fopen" dimension="none" value="sd*sd" exposure="fopen"/>
             
             <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
             

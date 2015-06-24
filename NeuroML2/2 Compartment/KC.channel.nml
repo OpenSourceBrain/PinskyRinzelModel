@@ -5,17 +5,15 @@
     
     <ComponentType name="KCChannelPR" extends="baseIonChannelPR">
         
-        <Requirement name="iCa" dimension="current" />
-        <Requirement name="surfaceArea" dimension="area" />
+        <Requirement name="iDensityCa" dimension="currentDensity" />
         
         <Dynamics>
             
-            <DerivedVariable name="ICad" dimension="currentDensity" value="-iCa / surfaceArea"/>
             
             <StateVariable name="Cad" dimension="none"/>
-            <StateVariable name="chid" dimension="none"/>
+            <TimeDerivative variable="Cad" value="(0.13*iDensityCa/UAMP_PER_CM2-0.075*Cad) / MSEC"/>
             
-            <TimeDerivative variable="Cad" value="(-0.13*ICad/UAMP_PER_CM2-0.075*Cad) / MSEC"/>
+            <StateVariable name="chid" dimension="none"/>
             
             <ConditionalDerivedVariable name="chid" dimension="none">
                 <Case condition="Cad/250 .gt. 1" value="1"/>
@@ -36,9 +34,7 @@
             
             <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
             
-<!--            <DerivedVariable name="fopen" dimension="none" value="cd*chid" exposure="fopen"/>-->
-
-            <DerivedVariable name="fopen" dimension="none" value="chid*cd" exposure="fopen"/>
+            <DerivedVariable name="fopen" dimension="none" value="cd*chid" exposure="fopen"/>
 
             <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
             

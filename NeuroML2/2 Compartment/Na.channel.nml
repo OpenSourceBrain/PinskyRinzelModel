@@ -11,6 +11,8 @@
             
             <StateVariable name="hs" dimension="none"/>
             
+            <DerivedVariable name="Vs" dimension="voltage" value="v"/>
+            
             <DerivedVariable name="alphams_Vs" dimension="none" value="0.32*(-46.9-Vs/MVOLT)/(exp((-46.9-Vs/MVOLT)/4.0)-1.0)"/>
             <DerivedVariable name="betams_Vs" dimension="none" value="0.28*(Vs/MVOLT+19.9)/(exp((Vs/MVOLT+19.9)/5.0)-1.0)"/>
             <DerivedVariable name="Minfs_Vs" dimension="none" value="alphams_Vs/(alphams_Vs+betams_Vs)"/>
