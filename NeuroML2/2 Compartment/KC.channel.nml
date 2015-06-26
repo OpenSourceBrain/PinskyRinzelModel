@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+    
+    <ionChannel id="KC" type="KCChannelPR" conductance="0 pS" />
+    
+    <ComponentType name="KCChannelPR" extends="baseIonChannelPR">
+        
+        <Requirement name="iDensityCa" dimension="currentDensity" />
+        
+        <Dynamics>
+            
+            
+            <StateVariable name="Cad" dimension="none"/>
+            <TimeDerivative variable="Cad" value="(0.13*iDensityCa/UAMP_PER_CM2-0.075*Cad) / MSEC"/>
+            
+            <StateVariable name="chid" dimension="none"/>
+            
+            <ConditionalDerivedVariable name="chid" dimension="none">
+                <Case condition="Cad/250 .gt. 1" value="1"/>
+                <Case value="Cad/250"/>
+            </ConditionalDerivedVariable>
+            
+            <StateVariable name="cd" dimension="none"/>
+            
+            <ConditionalDerivedVariable name="alphacd_Vd" dimension="none">
+                <Case condition="Vd .lt. -10*MVOLT" value="exp((Vd/MVOLT+50.0)/11-(Vd/MVOLT+53.5)/27)/18.975"/>
+                <Case value="2.0*exp((-53.5-Vd/MVOLT)/27.0)"/>
+            </ConditionalDerivedVariable>
+            
+            <ConditionalDerivedVariable name="betacd_Vd" dimension="none">
+                <Case condition="Vd .lt. -10*MVOLT" value="(2.0*exp((-53.5-Vd/MVOLT)/27.0)-alphacd_Vd)"/>
+                <Case value="0"/>
+            </ConditionalDerivedVariable>
+            
+            <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
+            
+            <DerivedVariable name="fopen" dimension="none" value="cd*chid" exposure="fopen"/>
+
+            <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
+            
+        </Dynamics>
+        
+    </ComponentType>
+    
+</neuroml>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+    
+    <ionChannel id="Cad" type="CadChannelPR" conductance="0 pS" />
+    
+    <!-- <DerivedVariable name="ICad" dimension="currentDensity" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/> -->
+    
+    <ComponentType name="CadChannelPR" extends="baseIonChannelPR">
+        
+        <!-- channelDensity only needs fopen (dimensionless)-->
+        
+        <Dynamics>
+
+            <StateVariable name="sd" dimension="none"/>
+            
+            <DerivedVariable name="alphasd_Vd" dimension="none" value="1.6/(1.0+exp(-0.072*(Vd/MVOLT-5.0)))"/>
+            <DerivedVariable name="betasd_Vd" dimension="none" value="0.02*(Vd/MVOLT+8.9)/(exp((Vd/MVOLT+8.9)/5.0)-1.0)"/>
+            
+            <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
+            
+            <DerivedVariable name="fopen" dimension="none" value="sd*sd" exposure="fopen"/>
+            
+            <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
+            
+        </Dynamics>
+        
+    </ComponentType>
+    
+</neuroml>

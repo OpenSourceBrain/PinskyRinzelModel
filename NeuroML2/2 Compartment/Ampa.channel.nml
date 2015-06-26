@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+    
+    <ionChannel id="Ampa" type="AmpaChannelPR" conductance="0 pS" />
+    
+    <ComponentType name="AmpaChannelPR" extends="baseIonChannelPR">
+        
+        <!-- channelDensity only needs fopen (dimensionless)-->
+        
+        <Dynamics>
+            
+            <StateVariable name="Wi" dimension="none"/>
+            
+            <!-- This should be count of incoming cells with Vs over 20mV -->
+            <DerivedVariable name="numCellsWithVover20" value="0" />
+            
+            <TimeDerivative variable="Wi" value="numCellsWithVover20-Wi/2.0" />
+            
+            <DerivedVariable name="fopen" dimension="none" value="Wi" exposure="fopen"/>
+            
+            <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
+            
+        </Dynamics>
+        
+    </ComponentType>
+    
+</neuroml>
+
+
+

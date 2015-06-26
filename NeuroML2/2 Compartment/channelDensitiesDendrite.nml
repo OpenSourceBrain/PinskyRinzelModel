@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+       
+       <ComponentType name="channelDensitiesDendrite" extends="baseChannelDensities">
+           
+           <Requirement name="Vd" dimension="voltage" />
+           
+           <Dynamics>
+               <DerivedVariable name="v" value="Vd" exposure="v" dimension="voltage" />
+           </Dynamics>
+           
+       </ComponentType>
+       
+</neuroml>
+
