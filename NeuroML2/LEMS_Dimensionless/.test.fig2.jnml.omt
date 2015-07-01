@@ -2,6 +2,6 @@
 # Still in development, subject to change without notice!!
 
 # Note: so far only tests that model will run with jNeuroML...
-target: LEMS_Figure2.xml
+target: LEMS_Figure2DL.xml
 engine: jNeuroML
 
