@@ -1,6 +1,10 @@
-/NeuroML2/*.log
-/NeuroML2/*.dat
-/NeuroML2/*.mod
+*.log
+*.dat
+*.mod
+*.ode
+*brian.py
+*brian2.py
+*nrn.py
 
 *.gv
 *brian.py
