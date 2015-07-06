@@ -24,7 +24,7 @@
                 <Case value="Si"/>
             </ConditionalDerivedVariable>
             
-            <DerivedVariable name="fopen" dimension="none" value="Sisat/(1.0+0.28*exp(-0.062*(Vd/MVOLT-60.0)))" exposure="fopen"/>
+            <DerivedVariable name="fopen" dimension="none" value="Sisat/(1.0+0.28*exp(-0.062*(v/MVOLT-60.0)))" exposure="fopen"/>
             
             <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
             

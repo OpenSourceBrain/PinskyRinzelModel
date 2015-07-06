@@ -27,21 +27,26 @@
     <Include file="channelDensitiesDendrite.nml"/>
     <Include file="twoCompartmentCell.cell.nml" />
     
-    <Include file="pyramidal2comp.cell.nml" />
+    <Include file="Figure2A&3.parameters.nml" />
     
     
     <Target component="sim1"/>
     
-    <Component type="Simulation" id="sim1" length="1500.0ms" step="0.01ms" target="CA3pyramidalPR">
+    <Component type="Simulation" id="sim1" length="150.0ms" step="0.005ms" target="pr2A">
         
-        <Display id="Voltages" title="Test" xmin="-20" xmax="1500" ymin="-70" ymax="20" timeScale="1ms">
+        <Display id="Voltages" title="Figure 3 Voltages" xmin="80" xmax="130" ymin="-70" ymax="30" timeScale="1ms">
 
             <Line id="Vs" timeScale="1ms" quantity="Vs" scale="1 mV" color="#00FF00"/>
-            <Line id="Vd" timeScale="1ms" quantity="Vd" scale="1 mV" color="#FF0000"/>
-
+            <Line id="Vd" timeScale="1ms" quantity="Vd" scale="1 mV" color="#0000FF"/>
+        </Display>
+        
+        <Display id="Ca" title="Figure 3 Calcium" xmin="80" xmax="130" ymin="0" ymax="400" timeScale="1ms">
+            
+            <Line id="Ca" timeScale="1ms" quantity="Cad" scale="1" color="#0000FF"/>
         </Display>
     
     </Component>
+    
     
     
 </Lems>

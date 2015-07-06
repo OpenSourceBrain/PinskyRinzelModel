@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
+    
+    <ionChannel id="Na" type="NaChannelPR" conductance="0 pS" />
+    
+    <ComponentType name="NaChannelPR" extends="baseIonChannelPR">
+        
+        <Dynamics>
+            
+            <StateVariable name="hs" dimension="none"/>
+            
+            <DerivedVariable name="alphams" dimension="none" value="0.32*(-46.9-v/MVOLT)/(exp((-46.9-v/MVOLT)/4.0)-1.0)"/>
+            <DerivedVariable name="betams" dimension="none" value="0.28*(v/MVOLT+19.9)/(exp((v/MVOLT+19.9)/5.0)-1.0)"/>
+            <DerivedVariable name="Minfs" dimension="none" value="alphams/(alphams+betams)"/>
+            <DerivedVariable name="alphahs" dimension="none" value="0.128*exp((-43.0-v/MVOLT)/18.0)"/>
+            <DerivedVariable name="betahs" dimension="none" value="4.0/(1.0+exp((-20.0-v/MVOLT)/5.0))"/>
+            
+            <TimeDerivative variable="hs" value="(alphahs-(alphahs+betahs)*hs) / MSEC"/>
+            
+            <DerivedVariable name="fopen" dimension="none" value="(Minfs^2)*hs" exposure="fopen"/>
+            
+            <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
+            
+        </Dynamics>
+        
+    </ComponentType>
+    
+</neuroml>
+
+
+

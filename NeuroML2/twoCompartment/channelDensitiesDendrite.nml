@@ -7,6 +7,8 @@
            
            <Requirement name="Vd" dimension="voltage" />
            
+           <Parameter name="initialQ" dimension="none" />
+           
            <Dynamics>
                <DerivedVariable name="v" value="Vd" exposure="v" dimension="voltage" />
            </Dynamics>

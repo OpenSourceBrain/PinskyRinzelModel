@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd">
     
-    <ionChannel id="Kahp" type="KahpChannelPR" conductance="0 pS" qd0="0" />
+    <ionChannel id="Kahp" type="KahpChannelPR" conductance="0 pS" />
     
     <ComponentType name="KahpChannelPR" extends="baseIonChannelPR">
         
-        <Parameter name="qd0" dimension="none" />
+        <Requirement name="initialQ" dimension="none" />
         
         <Requirement name="iDensityCa" dimension="currentDensity" />
+        
+        <Exposure name="Cad" dimension="none" />
+        <Exposure name="qd" dimension="none" />
         
         <Constant name="betaqd" dimension="none" value="0.001"/>
         
         <Dynamics>
             
-            <StateVariable name="Cad" dimension="none"/>
+            <StateVariable name="Cad" dimension="none" exposure="Cad"/>
             <TimeDerivative variable="Cad" value="(0.13*iDensityCa/UAMP_PER_CM2-0.075*Cad) / MSEC"/>
             
             
-            <StateVariable name="qd" dimension="none"/>
+            <StateVariable name="qd" dimension="none" exposure="qd"/>
             
             <ConditionalDerivedVariable name="alphaqd" dimension="none">
                 <Case condition="0.00002*Cad .gt. 0.01" value="0.01"/>
@@ -31,7 +34,7 @@
             <DerivedVariable name="g" value="conductance" exposure="g" dimension="conductance" />
             
             <OnStart>
-                <StateAssignment variable="qd" value="qd0" />
+                <StateAssignment variable="qd" value="initialQ" />
             </OnStart>
             
         </Dynamics>

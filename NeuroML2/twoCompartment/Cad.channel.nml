@@ -3,20 +3,16 @@
     
     <ionChannel id="Cad" type="CadChannelPR" conductance="0 pS" />
     
-    <!-- <DerivedVariable name="ICad" dimension="currentDensity" exposure="ICad" value="gCa*sd*sd*(Vd-VCa)"/> -->
-    
     <ComponentType name="CadChannelPR" extends="baseIonChannelPR">
-        
-        <!-- channelDensity only needs fopen (dimensionless)-->
         
         <Dynamics>
 
             <StateVariable name="sd" dimension="none"/>
             
-            <DerivedVariable name="alphasd_Vd" dimension="none" value="1.6/(1.0+exp(-0.072*(Vd/MVOLT-5.0)))"/>
-            <DerivedVariable name="betasd_Vd" dimension="none" value="0.02*(Vd/MVOLT+8.9)/(exp((Vd/MVOLT+8.9)/5.0)-1.0)"/>
+            <DerivedVariable name="alphasd" dimension="none" value="1.6/(1.0+exp(-0.072*(v/MVOLT-5.0)))"/>
+            <DerivedVariable name="betasd" dimension="none" value="0.02*(v/MVOLT+8.9)/(exp((v/MVOLT+8.9)/5.0)-1.0)"/>
             
-            <TimeDerivative variable="sd" value="(alphasd_Vd-(alphasd_Vd+betasd_Vd)*sd) / MSEC"/>
+            <TimeDerivative variable="sd" value="(alphasd-(alphasd+betasd)*sd) / MSEC"/>
             
             <DerivedVariable name="fopen" dimension="none" value="sd*sd" exposure="fopen"/>
             

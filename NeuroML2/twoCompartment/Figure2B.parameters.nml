@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="CA3pyramidalPR">
 
-
-    <include href="baseChannelDensities.nml"/>
-    <include href="channelDensitiesSoma.nml"/>
-    <include href="channelDensitiesDendrite.nml"/>
-    <include href="twoCompartmentCell.cell.nml"/>
-
-    <include href="somaLeak.channel.nml"/>
-    <include href="Na.channel.nml"/>
-    <include href="Kdr.channel.nml"/>
-    
-    <include href="dendriteLeak.channel.nml"/>
-    <include href="Cad.channel.nml"/>
-    <include href="Kahp.channel.nml"/>
-    <include href="KC.channel.nml"/>
-    <include href="Nmda.channel.nml"/>
-    <include href="Ampa.channel.nml"/>
-    
-
-    <twoCompartmentCell id="CA3pyramidalPR">
+    <twoCompartmentCell id="pr2B">
         
-        <notes>2 Compartment CA3 Pyramidal Cell Model from Pinsky and Rinsel (1994)</notes>
+        <notes>Parameters for Figure 2B of Pinsky Rinsel '94 model.</notes>
         
         <morphology id="morphology">
             
@@ -60,7 +42,7 @@
             
         </morphology>
         
-        <channelDensitiesSoma id="channelDensitiesSoma" couplingStrength="2.1" iDensityInjection="0.75 uA_per_cm2">
+        <channelDensitiesSoma id="channelDensitiesSoma" couplingStrength="2.1" iDensityInjection="-0.5 uA_per_cm2">
             
             <channelDensity id="somaLeakChannels" ionChannel="somaLeak" condDensity="0.1 mS_per_cm2" erev="-60 mV"
                 segmentGroup="soma_group" ion="non-specific" />
@@ -73,7 +55,7 @@
 
         </channelDensitiesSoma>
         
-        <channelDensitiesDendrite id="channelDensitiesDendrite" iDensityInjection="0 uA_per_cm2">
+        <channelDensitiesDendrite id="channelDensitiesDendrite" iDensityInjection="2.49 uA_per_cm2" initialQ="0">
             
             <channelDensity id="dendriteLeakChannels" ionChannel="dendriteLeak" condDensity="0.1 mS_per_cm2"
                 erev="-60 mV" segmentGroup="dendrite_group" ion="non-specific" />
