@@ -2,13 +2,13 @@ Synaptic Dynamics
 ==================
 Missing synaptic currents (added)
 -------------------------
-The XPP [.ode file](../XPP/booth_bose.ode) for this model [obtained from ModelDB](https://senselab.med.yale.edu/ModelDB/ShowModel.cshtml?model=35358&file=\b04feb12\booth_bose.ode) does not include synaptic dynamics. Specifically, Idendrite, Isynapse, Inmda, and Iampa currents are not included. Description on ModelDB mentions that Victoria Booth may have additional details. We emailed her to see if we can get additional files.
+The XPP [.ode file](../booth_bose.ode) for this model [obtained from ModelDB](https://senselab.med.yale.edu/ModelDB/ShowModel.cshtml?model=35358&file=\b04feb12\booth_bose.ode) does not include synaptic dynamics. Specifically, Idendrite, Isynapse, Inmda, and Iampa currents are not included. Description on ModelDB mentions that Victoria Booth may have additional details. We emailed her to see if we can get additional files.
 
-New .ode file incorporating the previously missing currents [can be found here](../XPP/booth_bose_syn.ode).
+New .ode file incorporating the previously missing currents [can be found here](../booth_bose_syn.ode).
 
 Files from Victoria
 -----------------
-She replied with email below and we include the [files she attached](../XPP/Victoria Booth code).
+She replied with email below and we include the [files she attached](../Victoria Booth code).
 
 Hi Sharon and Padraig,
 
