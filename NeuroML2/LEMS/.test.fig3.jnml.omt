@@ -15,7 +15,6 @@ experiments:
           method: threshold
           threshold: -25
         tolerance: 0
-
   Vd:
     observables:
       spike times:
@@ -25,6 +24,6 @@ experiments:
           scaling: [1000, 1000]
         spike detection: 
           method: threshold
-          threshold: -20
+          threshold: -13
         tolerance: 0
 

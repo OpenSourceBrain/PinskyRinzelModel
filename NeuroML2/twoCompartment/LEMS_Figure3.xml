@@ -32,7 +32,7 @@
 
   <Target component="sim1"/>
 
-  <Component type="Simulation" id="sim1" length="150.0ms" step="0.005ms" target="pr2A">
+  <Component type="Simulation" id="sim1" length="130ms" step="0.01ms" target="pr2A">
 
     <Display id="Voltages" title="Figure 3 Voltages" xmin="80" xmax="130" ymin="-70" ymax="30" timeScale="1ms">
       <Line id="Vs" timeScale="1ms" quantity="Vs" scale="1 mV" color="#00FF00"/>

@@ -43,7 +43,7 @@
     <population id="prEpop" component="pr2E" size="1"/>
   </network>
 
-  <Simulation id="sim1" length="1500ms" step="0.01ms" target="net1">
+  <Simulation id="sim1" length="1500ms" step="0.005ms" target="net1">
 
     <Display id="Fig2AVs"  title="Figure 2A somatic input, left: Vs" timeScale="1ms"        xmin="-100" xmax="1600" ymin="-70" ymax="40">
       <Line id="Vs" quantity="prApop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>

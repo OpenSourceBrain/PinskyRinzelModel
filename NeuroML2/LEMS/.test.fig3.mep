@@ -1,9 +1,9 @@
-system: Testing a single compartment cell
+system: Expected spike times for Figure 3
 
 experiments:
   Vs:
     expected:
-      spike times: [92.77, 96.3, 102.3]
+      spike times: [13.77, 16.830000000000002, 22.34, 92.47, 96.03, 102.06]
   Vd:
     expected:
-      spike times: [93.2, 98]
+      spike times: [14.35, 16.34, 93.09, 96.18]
