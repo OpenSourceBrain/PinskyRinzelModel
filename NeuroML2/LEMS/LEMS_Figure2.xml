@@ -63,7 +63,11 @@
             <Line id="q"  quantity="prApop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
 
-	<Display id="Fig2BVs"  title="Figure 2B dendritic input, left: Vs" timeScale="1ms"        xmin="-100" xmax="1600" ymin="-70" ymax="40">
+        <OutputFile id="Fig2A_Vs" fileName="Fig2A_Vs.dat">
+          <OutputColumn id="v0" quantity="prApop[0]/Vs" />
+        </OutputFile>
+
+	      <Display id="Fig2BVs"  title="Figure 2B dendritic input, left: Vs" timeScale="1ms"        xmin="-100" xmax="1600" ymin="-70" ymax="40">
             <Line id="Vs" quantity="prBpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
         </Display>
         
@@ -72,7 +76,11 @@
             <Line id="q"  quantity="prBpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
 
- 	<Display id="Fig2CVs"  title="Figure 2C strong somatic input, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
+        <OutputFile id="Fig2B_Vs" fileName="Fig2B_Vs.dat">
+          <OutputColumn id="v0" quantity="prBpop[0]/Vs" />
+        </OutputFile>
+
+ 	      <Display id="Fig2CVs"  title="Figure 2C strong somatic input, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
             <Line id="Vs" quantity="prCpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
         </Display>
         
@@ -81,7 +89,11 @@
             <Line id="q"  quantity="prCpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
 
- 	<Display id="Fig2DVs"  title="Figure 2D strong somatic input, tight coupling, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
+        <OutputFile id="Fig2C_Vs" fileName="Fig2C_Vs.dat">
+          <OutputColumn id="v0" quantity="prCpop[0]/Vs" />
+        </OutputFile>
+
+ 	      <Display id="Fig2DVs"  title="Figure 2D strong somatic input, tight coupling, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
             <Line id="Vs" quantity="prDpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
         </Display>
         
@@ -89,8 +101,12 @@
             <Line id="Ca" quantity="prDpop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
             <Line id="q"  quantity="prDpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
+
+        <OutputFile id="Fig2D_Vs" fileName="Fig2D_Vs.dat">
+          <OutputColumn id="v0" quantity="prDpop[0]/Vs" />
+        </OutputFile>
 	
-	<Display id="Fig2EVs"  title="Figure 2E dendritic input, weak coupling, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
+	      <Display id="Fig2EVs"  title="Figure 2E dendritic input, weak coupling, left: Vs" timeScale="1ms" xmin="-100" xmax="1600" ymin="-70" ymax="40">
             <Line id="Vs" quantity="prEpop[0]/Vs" scale="0.001"  color="#000000" timeScale="1ms"/>
         </Display>
         
@@ -98,6 +114,10 @@
             <Line id="Ca" quantity="prEpop[0]/Cad" scale="666.7"  color="#000000" timeScale="1ms"/>
             <Line id="q"  quantity="prEpop[0]/qd" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
+
+        <OutputFile id="Fig2E_Vs" fileName="Fig2E_Vs.dat">
+          <OutputColumn id="v0" quantity="prEpop[0]/Vs" />
+        </OutputFile>
 
     </Simulation>
 

@@ -1,0 +1,29 @@
+# Script for running automated tests on OSB using Travis-CI, see https://github.com/OpenSourceBrain/osb-model-validation  
+# Still in development, subject to change without notice!!
+target: LEMS_Figure3.xml
+engine: jNeuroML
+mep: .test.fig3.mep
+experiments:
+  Vs:
+    observables:
+      spike times:
+        file: 
+          path: Fig3_Vs.dat
+          columns: [0,1]
+          scaling: [1000, 1000]
+        spike detection: 
+          method: threshold
+          threshold: -25
+        tolerance: 0
+  Vd:
+    observables:
+      spike times:
+        file: 
+          path: Fig3_Vd.dat
+          columns: [0,1]
+          scaling: [1000, 1000]
+        spike detection: 
+          method: threshold
+          threshold: -20
+        tolerance: 0
+

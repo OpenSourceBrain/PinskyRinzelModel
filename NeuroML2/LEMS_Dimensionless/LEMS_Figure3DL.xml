@@ -21,16 +21,25 @@
     </network>
         
 
-    <Simulation id="sim1" length="50ms" step="0.01ms" target="net1">
+    <Simulation id="sim1" length="130ms" step="0.01ms" target="net1">
 
-        <Display id="Fig3VsVd" title="Figure 3 Vs and Vd" timeScale="1ms" xmin="0" xmax="50" ymin="-70" ymax="30">
+        <Display id="Fig3VsVd" title="Figure 3 Vs and Vd" timeScale="1ms" xmin="80" xmax="130" ymin="-70" ymax="30">
             <Line id="Vs" quantity="pr1pop[0]/Vs" scale="1"  color="#00FF00" timeScale="1ms"/>
             <Line id="Vd" quantity="pr1pop[0]/Vd" scale="1"  color="#FF00FF" timeScale="1ms"/>
         </Display>
         
-        <Display id="Fig3Ca" title="Figure 3 Ca" timeScale="1ms" xmin="0" xmax="50" ymin="-20" ymax="420">
+        <Display id="Fig3Ca" title="Figure 3 Ca" timeScale="1ms" xmin="80" xmax="130" ymin="-20" ymax="420">
             <Line id="Ca" quantity="pr1pop[0]/Cad" scale="1"  color="#000000" timeScale="1ms"/>
         </Display>
+        
+        
+        <OutputFile id="of0" fileName="Fig3_Vs.dat">
+            <OutputColumn id="v0" quantity="pr1pop[0]/Vs" />
+        </OutputFile>
+        
+        <OutputFile id="of1" fileName="Fig3_Vd.dat">
+            <OutputColumn id="v0" quantity="pr1pop[0]/Vd" />
+        </OutputFile>
 
     </Simulation>
 

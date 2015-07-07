@@ -1,0 +1,22 @@
+system: Testing a single compartment cell
+
+experiments:
+  Fig2A_Vs:
+    expected:
+      spike times: [14, 92.8, 436, 832.5, 1428.8]
+
+  Fig2B_Vs:
+    expected:
+      spike times: [9.5, 46.5, 72.5, 123.2, 151.2, 187, 268]
+
+  Fig2C_Vs:
+    expected:
+      spike times: [7.9, 38.2, 61.2, 67.2, 84.4, 98.0, 116.2]
+
+  Fig2D_Vs:
+    expected:
+      spike times: [8.5, 37.25, 65.7, 97.2, 132.2, 171.1]
+
+  Fig2E_Vs:
+    expected:
+      spike times: [16.7, 23.5, 29.7, 53.1, 82.3, 103.5, 129, 152.6]

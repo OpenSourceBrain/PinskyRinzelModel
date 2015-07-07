@@ -1,0 +1,9 @@
+system: Testing a single compartment cell
+
+experiments:
+  Vs:
+    expected:
+      spike times: [92.77, 96.3, 102.3]
+  Vd:
+    expected:
+      spike times: [93.2, 98]
