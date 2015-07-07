@@ -4,6 +4,7 @@
 target: LEMS_Figure2.xml
 engine: jNeuroML
 mep: .test.fig2.mep
+
 experiments:
   Fig2A_Vs:
     observables:

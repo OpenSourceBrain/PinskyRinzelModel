@@ -3,9 +3,10 @@ PinskyRinzelModel
 
 Reduced CA3 cell model from Pinsky & Rinzel 1994
 
-Still in development!!
-
 See http://www.opensourcebrain.org/projects/pinskyrinzelmodel
+and https://github.com/OpenSourceBrain/Contribute/issues/2
+
+[![Build Status](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel)
 
 Reproduced Figures 2 & 3 using LEMS
 ========================

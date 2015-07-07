@@ -1,7 +1,17 @@
-/NeuroML2/jsbml.log
-/NeuroML2/velocity.log
+*.log
+*.dat
+*.mod
+*.ode
+*brian.py
+*brian2.py
+*nrn.py
+
 *.gv
 *brian.py
+*nrn.py
+*~
+
+x86_64
 
 .DS_Store
 Thumbs.db
