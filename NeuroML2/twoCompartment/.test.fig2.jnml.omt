@@ -11,11 +11,11 @@ experiments:
         file: 
           path: Fig2A_Vs.dat
           columns: [0,1]
-          scaling: [1000, 1]
+          scaling: [1000, 1000]
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 0
+        tolerance: 0.05
 
   Fig2B_Vs:
     observables:
@@ -23,11 +23,11 @@ experiments:
         file: 
           path: Fig2B_Vs.dat
           columns: [0,1]
-          scaling: [1000, 1]
+          scaling: [1000, 1000]
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 0
+        tolerance: 0.05
 
   Fig2C_Vs:
     observables:
@@ -35,11 +35,11 @@ experiments:
         file: 
           path: Fig2C_Vs.dat
           columns: [0,1]
-          scaling: [1000, 1]
+          scaling: [1000, 1000]
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 0
+        tolerance: 0.05
 
   Fig2D_Vs:
     observables:
@@ -47,11 +47,11 @@ experiments:
         file: 
           path: Fig2D_Vs.dat
           columns: [0,1]
-          scaling: [1000, 1]
+          scaling: [1000, 1000]
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 0
+        tolerance: 0.05
 
   Fig2E_Vs:
     observables:
@@ -59,9 +59,9 @@ experiments:
         file: 
           path: Fig2E_Vs.dat
           columns: [0,1]
-          scaling: [1000, 1]
+          scaling: [1000, 1000]
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 0
+        tolerance: 0.05
 
