@@ -6,9 +6,6 @@
         <Constant name="MVOLT" dimension="voltage" value="1 mV"/>
         <Constant name="UAMP_PER_CM2" dimension="currentDensity" value="1 uA_per_cm2"/>
 
-        <Requirement name="Vd" dimension="voltage" />
-        <Requirement name="Vs" dimension="voltage" />
-
         <Dynamics>
 
             <DerivedVariable name="fopen" value="1" exposure="fopen" dimension="none" />

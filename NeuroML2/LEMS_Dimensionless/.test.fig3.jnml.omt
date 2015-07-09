@@ -2,9 +2,9 @@
 # Still in development, subject to change without notice!!
 target: LEMS_Figure3DL.xml
 engine: jNeuroML
-mep: ../LEMS/.test.mep
+mep: ../LEMS/.test.fig3.mep
 experiments:
-  Soma:
+  Vs:
     observables:
       spike times:
         file: 
@@ -15,7 +15,7 @@ experiments:
           method: threshold
           threshold: -25
         tolerance: 0
-  Dendrite:
+  Vd:
     observables:
       spike times:
         file: 

@@ -1,0 +1,58 @@
+<Lems xmlns="http://www.neuroml.org/lems/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/lems/0.7.2  https://raw.githubusercontent.com/LEMS/LEMS/development/Schemas/LEMS/LEMS_v0.7.2.xsd">
+
+  <!--Include standard NeuroML 2 ComponentType definitions-->
+
+  <Include file="Cells.xml"/>
+  <Include file="Networks.xml"/>
+  <Include file="Simulation.xml"/>
+
+
+  <!--   Channel/synapse files-->
+  <Include file="base.channel.nml"/>
+
+  <Include file="somaLeak.channel.nml"/>
+  <Include file="Na.channel.nml"/>
+  <Include file="Kdr.channel.nml"/>
+
+  <Include file="dendriteLeak.channel.nml"/>
+  <Include file="Cad.channel.nml"/>
+  <Include file="Kahp.channel.nml"/>
+  <Include file="KC.channel.nml"/>
+  <Include file="Nmda.channel.nml"/>
+  <Include file="Ampa.channel.nml"/>
+
+  <!--   Cell files-->
+  <Include file="baseChannelDensities.nml"/>
+  <Include file="channelDensitiesSoma.nml"/>
+  <Include file="channelDensitiesDendrite.nml"/>
+  <Include file="twoCompartmentCell.cell.nml" />
+
+  <Include file="Figure2Aand3.parameters.nml" />
+
+
+  <Target component="sim1"/>
+
+  <Component type="Simulation" id="sim1" length="130ms" step="0.01ms" target="pr2A">
+
+    <Display id="Voltages" title="Figure 3 Voltages" xmin="80" xmax="130" ymin="-70" ymax="30" timeScale="1ms">
+      <Line id="Vs" timeScale="1ms" quantity="Vs" scale="1 mV" color="#00FF00"/>
+      <Line id="Vd" timeScale="1ms" quantity="Vd" scale="1 mV" color="#0000FF"/>
+    </Display>
+
+    <Display id="Ca" title="Figure 3 Calcium" xmin="80" xmax="130" ymin="0" ymax="400" timeScale="1ms">
+      <Line id="Ca" timeScale="1ms" quantity="Cad" scale="1" color="#0000FF"/>
+    </Display>
+
+    <OutputFile id="Fig3_Vs" fileName="Fig3_Vs.dat">
+      <OutputColumn id="v0" quantity="Vs" />
+    </OutputFile>
+
+    <OutputFile id="Fig3_Vd" fileName="Fig3_Vd.dat">
+      <OutputColumn id="v0" quantity="Vd" />
+    </OutputFile>
+
+  </Component>
+
+
+
+</Lems>

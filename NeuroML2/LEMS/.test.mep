@@ -1,9 +1,0 @@
-system: Testing a single compartment cell
-
-experiments:
-  Soma:
-    expected:
-      spike times: [13.77, 16.83, 22.34]
-  Dendrite:
-    expected:
-      spike times: [14.35, 16.34]

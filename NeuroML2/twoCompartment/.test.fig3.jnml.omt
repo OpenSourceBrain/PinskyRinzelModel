@@ -2,7 +2,7 @@
 # Still in development, subject to change without notice!!
 target: LEMS_Figure3.xml
 engine: jNeuroML
-mep: .test.fig3.mep
+mep: ../LEMS/.test.fig3.mep
 experiments:
   Vs:
     observables:
@@ -14,7 +14,7 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 0
+        tolerance: 0.05
   Vd:
     observables:
       spike times:
@@ -25,5 +25,5 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -13
-        tolerance: 0
+        tolerance: 0.05
 

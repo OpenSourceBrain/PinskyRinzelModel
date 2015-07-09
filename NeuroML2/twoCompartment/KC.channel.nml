@@ -22,17 +22,17 @@
             
             <StateVariable name="cd" dimension="none"/>
             
-            <ConditionalDerivedVariable name="alphacd_Vd" dimension="none">
-                <Case condition="Vd .lt. -10*MVOLT" value="exp((Vd/MVOLT+50.0)/11-(Vd/MVOLT+53.5)/27)/18.975"/>
-                <Case value="2.0*exp((-53.5-Vd/MVOLT)/27.0)"/>
+            <ConditionalDerivedVariable name="alphacd" dimension="none">
+                <Case condition="v .lt. -10*MVOLT" value="exp((v/MVOLT+50.0)/11-(v/MVOLT+53.5)/27)/18.975"/>
+                <Case value="2.0*exp((-53.5-v/MVOLT)/27.0)"/>
             </ConditionalDerivedVariable>
             
-            <ConditionalDerivedVariable name="betacd_Vd" dimension="none">
-                <Case condition="Vd .lt. -10*MVOLT" value="(2.0*exp((-53.5-Vd/MVOLT)/27.0)-alphacd_Vd)"/>
+            <ConditionalDerivedVariable name="betacd" dimension="none">
+                <Case condition="v .lt. -10*MVOLT" value="(2.0*exp((-53.5-v/MVOLT)/27.0)-alphacd)"/>
                 <Case value="0"/>
             </ConditionalDerivedVariable>
             
-            <TimeDerivative variable="cd" value="(alphacd_Vd-(alphacd_Vd+betacd_Vd)*cd) / MSEC"/>
+            <TimeDerivative variable="cd" value="(alphacd-(alphacd+betacd)*cd) / MSEC"/>
             
             <DerivedVariable name="fopen" dimension="none" value="cd*chid" exposure="fopen"/>
 

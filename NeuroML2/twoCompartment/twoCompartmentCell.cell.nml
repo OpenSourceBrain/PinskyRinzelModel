@@ -6,7 +6,7 @@
     
     <ComponentType name="twoCompartmentCell"
         extends="baseCellMembPot"
-        description="">
+        description="2 Compartment CA3 Pyramidal Cell Model from Pinsky and Rinsel (1994). Soma and dendrite channels are declared in child channelDensitiesSoma/Dendrite elements. Vs corresponds to voltage in soma compartment and Vd corresponds to voltage in dendrite compartment.">
         
         <Child name="notes" type="notes"/>
         <Child name="annotation" type="annotation"/>
@@ -23,6 +23,8 @@
         <Exposure name="Vs" dimension="voltage"/>
         <Exposure name="Vd" dimension="voltage"/>
         <Exposure name="iDensityCa" dimension="currentDensity"/>
+        <Exposure name="Cad" dimension="none"/>
+        <Exposure name="qd" dimension="none"/>
         
         
         <Exposure name="spiking" dimension="none"/>
@@ -46,9 +48,6 @@
         
         <Dynamics>
             
-            
-            
-            
             <StateVariable name="spiking" exposure="spiking" dimension="none"/>
             
             <DerivedVariable name="initMembPot" dimension="voltage" select="biophysicalProperties/membraneProperties/initMembPotential/value"/>
@@ -66,8 +65,11 @@
             <StateVariable name="Vs" exposure="Vs" dimension="voltage"/>
             <StateVariable name="Vd" exposure="Vd" dimension="voltage"/>
             
-            <DerivedVariable variable="v" value="Vs" dimension="voltage" />
+            <DerivedVariable name="v" value="Vs" dimension="voltage" />
             
+            <DerivedVariable name="Cad" exposure="Cad" dimension="none" select="channelDensitiesDendrite/channelDensities[ionChannel='Kahp']/ionChannel/Cad" reduce="add" />
+            
+            <DerivedVariable name="qd" exposure="qd" dimension="none" select="channelDensitiesDendrite/channelDensities[ionChannel='Kahp']/ionChannel/qd" reduce="add" />
             
             <DerivedVariable name="iDensityCa" exposure="iDensityCa" dimension="currentDensity"
                 select="channelDensitiesDendrite/channelDensities[ion='ca']/iDensity" reduce="add"/>
