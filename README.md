@@ -15,9 +15,11 @@ Why Convert to NeuroML?
 -----------------------
 The original model was implemented for the [XPP simulator](http://www.math.pitt.edu/~bard/xpp/xpp.html). We have converted the model to NeuroML. The modular, XML nature of NeuroML allows to quickly re-use this model in network simulations and our tools allow [automated conversion to other supported simulator formats](https://neuroml.org/mappings).
 
-NeuroML Version
----------------
-The [version converted to NeuroML can be found here](NeuroML2/twoCompartment).
+NeuroML2/LEMS Versions
+-----------------------
+The model has been implemented as a new [ComponentType in LEMS](https://www.neuroml.org/lems_dev). There is one version which uses dimensional quantities for all parameters and voltage ([pinskyRinzelCA3Cell.xml](https://github.com/OpenSourceBrain/PinskyRinzelModel/blob/master/NeuroML2/LEMS/pinskyRinzelCA3Cell.xml)) and one that uses dimensionless parameters/variables ([pinskyRinzelCA3CellDL.xml](https://github.com/OpenSourceBrain/PinskyRinzelModel/blob/master/NeuroML2/LEMS_Dimensionless/pinskyRinzelCA3CellDL.xml)). These ComponentTypes will eventually be incorporated into the core [NeuroML2 ComponentType definitions](https://neuroml.org/NeuroML2CoreTypes/Cells.html).
+
+The aforementioned ComponentTypes contain all parameters, derived variables etc. for the model in a single Component. There is also a [hierarchical version of the model](NeuroML2/twoCompartment) using more of the NeuroML2 types for segments, channels etc.
 
 Installation Instructions
 -------------------------
