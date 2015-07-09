@@ -23,13 +23,16 @@ The aforementioned ComponentTypes contain all parameters, derived variables etc.
 
 Installation Instructions
 -------------------------
-1. [Download the Model Files](archive/master.zip)
-2. [Follow instructions to Install jNeuroML](https://github.com/NeuroML/jNeuroML). On Windows, you may also need [SVN](https://subversion.apache.org/packages.html#windows)
+1. [Download the Model Files](archive/master.zip), or clone the repository using git:
+
+    git clone https://github.com/OpenSourceBrain/PinskyRinzelModel.git
+    
+2. [Follow instructions to Install jNeuroML](https://github.com/NeuroML/jNeuroML) for the **jnml** executable. On Windows, you may also need [SVN](https://subversion.apache.org/packages.html#windows). Alternatively install [PyNeuroML](https://github.com/NeuroML/pyNeuroML) for the **pynml** executable. 
 3. Set the $PATH and $JNML_HOME variables as described in [#2](https://github.com/NeuroML/jNeuroML)
-4. Extract the model files to a folder. Change to NeuroML2/twoCompartment folder
-5. For Figure 2: Type 'jnml LEMS_Figure2.xml'
-6. For Figure 3: Type 'jnml LEMS_Figure3.xml'
-7. Windows with the plotted figures should show up as can be seen below
+4. Extract the model files to a folder. Change to NeuroML2/LEMS.
+5. For Figure 2: Type `jnml LEMS_Figure2.xml` or `pynml LEMS_Figure2.xml`.
+6. For Figure 3: Type `jnml LEMS_Figure3.xml` or `pynml LEMS_Figur3.xml`.
+7. Windows with the plotted figures should show up as can be seen below.
 
 Demonstrated Properties
 -----------------------
