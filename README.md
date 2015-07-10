@@ -65,3 +65,11 @@ Figure 2B is mostly reproducible. gnmda parameter (2nd of the triple in figure c
 Figure 2E
 ---------
 Figure 2E is reproducible only partially. Assuming gnmda refers to Id (see above figure 2B issue), and varying Id values, the closest match occurs around Id = 2.0 mA. Furthermore, initial value of qd = 0.4, as described in the paper, appears to be incorrect. Setting initial value to 0.14 results in a closer match. The paper describes that figure 2E spiking pattern was a periodic pattern of a burst followed by a spike. However, no combination of values of gc, Id, Is, gnmda, or initial qd was found to reproduce this pattern in XPP or LEMS. Furthermore, at Is=-0.5, Id=2, and varying gc around 1.425 (as mentioned in paper), the spiking pattern becomes very sensitive to small changes in gc. Because the paper describes a chaotic pattern, the spikes are very sensitive to the value of gc, and several parameter values appear to be incorrect, it's possible the reported figure is unreproducible without additional or existing paremeters being specified more precisely.
+
+Figure 3
+--------
+Figure 3 matches the published figure very closely, however some small differences remain.
+
+Differences between LEMS and twoCompartment versions
+----------------------------------------------------
+The spike times for the [LEMS with Dimensions](NeuroML2/LEMS) and [Two-Compartment NeuroML2](NeuroML2/twoCompartment) are very close but not identical (<1ms differences for runs <100 ms, 1-5ms differences for runs >1000 ms). This appears even if the models are simplified down to a single equasion. Reported as https://github.com/OpenSourceBrain/PinskyRinzelModel/issues/13.
