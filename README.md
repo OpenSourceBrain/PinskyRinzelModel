@@ -1,8 +1,8 @@
-### Introduction
+## Reduced CA3 cell model from Pinsky & Rinzel 1994
 
 [![Build Status](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel)
 
-####Overview of the Model
+#### Overview of the Model
 
 The Pinsky and Rinsel (1994) model is a 2-compartment (soma and dendrite), conductance-based ([Hodgin-Huxley](https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model) type) model of a [hippocampal](https://en.wikipedia.org/wiki/Hippocampus) [CA3](https://en.wikipedia.org/wiki/Region_III_of_hippocampus_proper) [pyramidal neuron](https://en.wikipedia.org/wiki/Pyramidal_cell). It is a reduced version of an earlier, 19-compartment model by Traub, et. al. (1991). This model demonstrates how similar qualitative and quantitative spiking behaviors can be obtained despite the reduction in model complexity. 
 
@@ -41,12 +41,12 @@ The aforementioned ComponentTypes contain all parameters, derived variables etc.
 
 #### Figure 2
 
-![Figure 2](NeuroML2/Figure 2.png "Reproduced Figure 2")
+![Figure 2](https://raw.githubusercontent.com/OpenSourceBrain/PinskyRinzelModel/master/NeuroML2/Figure%202.png "Reproduced Figure 2")
 Figure 2 shows how various amounts of current injection into the soma (Figure 2A, C, and D) and dendrite (Figure 2B and E) compartments, under varying coupling strengths affects the soma firing pattern. Figure 2D shows that under tight coupling, the model approximates a single-compartment model and does not result in bursts.
 
 #### Figure 3
 
-![Figure 3](NeuroML2/Figure 3.png "Reproduced Figure 3")
+![Figure 3](https://raw.githubusercontent.com/OpenSourceBrain/PinskyRinzelModel/master/NeuroML2/Figure%203.png "Reproduced Figure 3")
 Figure 3 is a close-up of the second burst in figure 2A. It demonstrates how the complex burst shape emerges from the 'ping-pong' interplay of the somatic and dendritic currents.
 
 #### Other Versions
