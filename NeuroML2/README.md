@@ -1,3 +1,1 @@
-**Note: Not yet complete!**
-
-Contact p.gleeson =at= ucl.ac.uk if you are interested in using/contributing to this model.
+See status of NeuroML2/LEMS conversion of this model in [README.md](https://github.com/OpenSourceBrain/PinskyRinzelModel/blob/master/README.md).
