@@ -15,7 +15,7 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 1
+        tolerance: 0.001
 
   Fig2B_Vs:
     observables:
@@ -27,7 +27,7 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 1
+        tolerance: 0.001
 
   Fig2C_Vs:
     observables:
@@ -39,7 +39,7 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 1
+        tolerance: 0.001
 
   Fig2D_Vs:
     observables:
@@ -51,7 +51,7 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 1
+        tolerance: 0.001
 
   Fig2E_Vs:
     observables:
@@ -63,5 +63,5 @@ experiments:
         spike detection: 
           method: threshold
           threshold: -25
-        tolerance: 1
+        tolerance: 0.001
 

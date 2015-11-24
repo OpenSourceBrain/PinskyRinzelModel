@@ -3,7 +3,7 @@ system: Expected spike times for Figure 3
 experiments:
   Vs:
     expected:
-      spike times: [13.77, 16.830000000000002, 22.34, 92.47, 96.03, 102.06]
+      spike times: [13.78, 16.84, 22.35, 92.48, 96.04, 102.07]
   Vd:
     expected:
-      spike times: [14.35, 16.34, 93.09, 96.18]
+      spike times: [14.36, 16.35, 93.1, 96.19]
