@@ -1,11 +1,8 @@
 ## Reduced CA3 cell model from Pinsky & Rinzel 1994
 
-[![Build Status](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel)
-
 #### Overview of the Model
 
-The Pinsky and Rinsel (1994) model is a 2-compartment (soma and dendrite), conductance-based ([Hodgin-Huxley](https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model) type) model of a [hippocampal](https://en.wikipedia.org/wiki/Hippocampus) [CA3](https://en.wikipedia.org/wiki/Region_III_of_hippocampus_proper) [pyramidal neuron](https://en.wikipedia.org/wiki/Pyramidal_cell). It is a reduced version of an earlier, 19-compartment model by Traub, et. al. (1991). This model demonstrates how similar qualitative and quantitative spiking behaviors can be obtained despite the reduction in model complexity. 
-
+The [Pinsky and Rinsel (1994)](https://www.ncbi.nlm.nih.gov/pubmed/8792224) model is a 2-compartment (soma and dendrite), conductance-based ([Hodgin-Huxley](https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model) type) model of a [hippocampal](https://en.wikipedia.org/wiki/Hippocampus) [CA3](https://en.wikipedia.org/wiki/Region_III_of_hippocampus_proper) [pyramidal neuron](https://en.wikipedia.org/wiki/Pyramidal_cell). It is a reduced version of an earlier, 19-compartment model by Traub, et. al. (1991). This model demonstrates how similar qualitative and quantitative spiking behaviors can be obtained despite the reduction in model complexity. 
 
 #### Demonstrated Physiological Properties
 
@@ -76,3 +73,11 @@ Figure 3 matches the published figure very closely, however some small differenc
 #### Differences between LEMS and twoCompartment versions
 
 The spike times for the [LEMS with Dimensions](NeuroML2/LEMS) and [Two-Compartment NeuroML2](NeuroML2/twoCompartment) are very close but not identical (<1ms differences for runs <100 ms, 1-5ms differences for runs >1000 ms). This appears even if the models are simplified down to a single equation. Reported as https://github.com/OpenSourceBrain/PinskyRinzelModel/issues/13.
+
+[![Build Status](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel)
+
+[![DOI](https://www.zenodo.org/badge/9026580.svg)](https://www.zenodo.org/badge/latestdoi/9026580)
+
+### Reusing this model
+
+The code in this repository is provided under the terms of the [software license](LICENSE) included with it. If you use this model in your research, we respectfully ask you to cite the references outlined in the [CITATION](CITATION.md) file.
