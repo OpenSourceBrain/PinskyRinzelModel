@@ -74,7 +74,7 @@ Figure 3 matches the published figure very closely, however some small differenc
 
 The spike times for the [LEMS with Dimensions](NeuroML2/LEMS) and [Two-Compartment NeuroML2](NeuroML2/twoCompartment) are very close but not identical (<1ms differences for runs <100 ms, 1-5ms differences for runs >1000 ms). This appears even if the models are simplified down to a single equation. Reported as https://github.com/OpenSourceBrain/PinskyRinzelModel/issues/13.
 
-[![Build Status](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.org/OpenSourceBrain/PinskyRinzelModel)
+[![Build Status](https://travis-ci.com/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.com/OpenSourceBrain/PinskyRinzelModel)
 
 [![DOI](https://www.zenodo.org/badge/9026580.svg)](https://www.zenodo.org/badge/latestdoi/9026580)
 
