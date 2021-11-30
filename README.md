@@ -76,7 +76,6 @@ The spike times for the [LEMS with Dimensions](NeuroML2/LEMS) and [Two-Compartme
 
 
 [![Continuous builds](https://github.com/OpenSourceBrain/PinskyRinzelModel/actions/workflows/ci.yml/badge.svg)](https://github.com/OpenSourceBrain/PinskyRinzelModel/actions/workflows/ci.yml)
-[![Build Status](https://travis-ci.com/OpenSourceBrain/PinskyRinzelModel.svg?branch=master)](https://travis-ci.com/OpenSourceBrain/PinskyRinzelModel)
 
 [![DOI](https://www.zenodo.org/badge/9026580.svg)](https://www.zenodo.org/badge/latestdoi/9026580)
 
