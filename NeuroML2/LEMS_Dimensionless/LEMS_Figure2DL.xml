@@ -12,31 +12,31 @@
 
   <Include file="pinskyRinzelCA3CellDL.xml"/>
 
-  <pinskyRinzelCA3CellDL id="pr2A" Is="0.75" Id="0" gc="2.1" qd0="0"
+  <pinskyRinzelCA3CellDL id="pr2A" Isoma="0.75" Idend="0" gc="2.1" qd0="0"
                         gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                        gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                        pp="0.5" Cm="3" alphac="2" betac="0.1"
                        gnmda="0" gampa="0" />
 
-  <pinskyRinzelCA3CellDL id="pr2B" Is="-0.5" Id="2.49" gc="2.1" qd0="0"
+  <pinskyRinzelCA3CellDL id="pr2B" Isoma="-0.5" Idend="2.49" gc="2.1" qd0="0"
                         gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                        gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                        pp="0.5" Cm="3" alphac="2" betac="0.1"
                        gnmda="0" gampa="0" />
 
-  <pinskyRinzelCA3CellDL id="pr2C" Is="2.5" Id="0" gc="2.1" qd0="0"
+  <pinskyRinzelCA3CellDL id="pr2C" Isoma="2.5" Idend="0" gc="2.1" qd0="0"
                         gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                         gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                         pp="0.5" Cm="3" alphac="2" betac="0.1"
                         gnmda="0" gampa="0" />
 
-  <pinskyRinzelCA3CellDL id="pr2D" Is="2.5" Id="0" gc="10.5" qd0="0"
+  <pinskyRinzelCA3CellDL id="pr2D" Isoma="2.5" Idend="0" gc="10.5" qd0="0"
                        gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                        gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                        pp="0.5" Cm="3" alphac="2" betac="0.1"
                        gnmda="0" gampa="0" />
 
-  <pinskyRinzelCA3CellDL id="pr2E" Is="-0.5" Id="2" gc="1.425" qd0="0.14"
+  <pinskyRinzelCA3CellDL id="pr2E" Isoma="-0.5" Idend="2" gc="1.425" qd0="0.14"
                        gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                        gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                        pp="0.5" Cm="3" alphac="2" betac="0.1"

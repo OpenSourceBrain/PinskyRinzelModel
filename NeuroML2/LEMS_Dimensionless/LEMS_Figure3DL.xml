@@ -10,11 +10,11 @@
 
     <Include file="pinskyRinzelCA3CellDL.xml"/>
 
-    <pinskyRinzelCA3CellDL id="prA" Is="0.75" gnmda="0" gc="2.1" qd0="0"
+    <pinskyRinzelCA3CellDL id="prA" Isoma="0.75" gnmda="0" gc="2.1" qd0="0"
 			 gLs="0.1" gLd="0.1" gNa="30" gKdr="15"
                          gCa="10" gKahp="0.8" gKC="15" VNa="60" VCa="80" VK="-75" VL="-60"
                          pp="0.5" Cm="3" alphac="2" betac="0.1"
-			 Id="0" gampa="0" />
+			 Idend="0" gampa="0" />
 
     <network id="net1">
         <population id="pr1pop" component="prA" size="1"/>
@@ -26,6 +26,7 @@
         <Display id="Fig3VsVd" title="Figure 3 Vs and Vd" timeScale="1ms" xmin="80" xmax="130" ymin="-70" ymax="30">
             <Line id="Vs" quantity="pr1pop[0]/Vs" scale="1"  color="#00FF00" timeScale="1ms"/>
             <Line id="Vd" quantity="pr1pop[0]/Vd" scale="1"  color="#FF00FF" timeScale="1ms"/>
+            <Line id="V" quantity="pr1pop[0]/V" scale="1"  color="#FF0000" timeScale="1ms"/>
         </Display>
         
         <Display id="Fig3Ca" title="Figure 3 Ca" timeScale="1ms" xmin="80" xmax="130" ymin="-20" ymax="420">
